@@ -1,51 +1,400 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/**
+ * AAIS 2025 Aviation Event Management System - Enhanced Global Styles
+ * Building on existing configuration with luxury aviation theme
+ */
 
-:root {
-  --aviation-gold: #C2A542;
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+ /* ===== Enhanced CSS Custom Properties ===== */
+ :root {
+   /* Your existing aviation gold */
+   --aviation-gold: #C2A542;
+
+   /* Additional luxury aviation colors */
+   --charcoal-deep: #1a202c;
+   --charcoal-light: #334155;
+   --soft-gray-bg: #e2e8f0;
+   --midnight-blue: #1e3a8a;
+   --aviation-orange: #f97316;
+
+   /* Gradients for luxury feel */
+   --gradient-aviation: linear-gradient(135deg, #1a202c 0%, #1e3a8a 100%);
+   --gradient-luxury: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+
+   /* Spacing scale for relaxed layouts */
+   --spacing-relaxed: 1.5rem;
+   --spacing-comfortable: 2rem;
+   --spacing-generous: 3rem;
+
+   /* Shadows */
+   --shadow-luxury: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+   --shadow-aviation: 0 20px 25px -5px rgba(26, 32, 44, 0.1), 0 10px 10px -5px rgba(26, 32, 44, 0.04);
+ }
+
+ /* ===== Enhanced Base Styles ===== */
+
+ /* Enhanced body with relaxed luxury background */
+ body {
+   @apply text-gray-900 font-sans antialiased;
+   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+   font-feature-settings: 'kern' 1, 'liga' 1;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   line-height: 1.6;
+ }
+
+ /* Enhanced typography hierarchy using your font system */
+ h1, h2, h3, h4, h5, h6 {
+   @apply font-bold text-aviationGold;
+   font-family: 'Interstate', 'Lucida Sans Demibold', 'Roboto Flex', 'Helvetica', 'Arial', sans-serif;
+   font-feature-settings: 'kern' 1, 'liga' 1;
+   line-height: 1.2;
+   margin-bottom: var(--spacing-relaxed);
+ }
+
+ h1 {
+   @apply text-4xl md:text-5xl lg:text-6xl;
+   margin-bottom: var(--spacing-comfortable);
+ }
+
+ h2 {
+   @apply text-3xl md:text-4xl lg:text-5xl;
+ }
+
+ h3 {
+   @apply text-2xl md:text-3xl lg:text-4xl;
+ }
+
+ h4 {
+   @apply text-xl md:text-2xl lg:text-3xl;
+ }
+
+ h5 {
+   @apply text-lg md:text-xl lg:text-2xl;
+ }
+
+ h6 {
+   @apply text-base md:text-lg lg:text-xl;
+ }
+
+ /* Enhanced paragraph styling with Roboto Flex for body text */
+ p {
+   @apply text-base lg:text-lg leading-relaxed text-gray-700;
+   font-family: 'Roboto Flex', 'Lucida Sans', 'Interstate', 'Helvetica', 'Arial', sans-serif;
+   margin-bottom: var(--spacing-relaxed);
+ }
+
+ /* Enhanced link styling with smooth transitions */
+ a {
+   @apply text-aviationGold transition-all duration-300;
+   text-decoration: none;
+   border-bottom: 1px solid transparent;
+ }
+
+ a:hover {
+   @apply transform;
+   color: var(--midnight-blue);
+   border-bottom-color: currentColor;
+   transform: translateY(-1px);
+ }
+
+ a:focus {
+   @apply outline-none ring-2 ring-aviationGold ring-offset-2;
+   border-radius: 0.125rem;
+ }
+
+ /* ===== Enhanced Custom Utility Classes ===== */
+
+ /* Your existing demibold class enhanced */
+ .demibold {
+   font-family: 'Lucida Sans Demibold', 'Lucida Sans', 'Interstate', 'Helvetica', 'Arial', sans-serif;
+   font-weight: 600;
+   letter-spacing: -0.025em;
+ }
+
+ /* Font family utilities based on your design system */
+ .font-heading {
+   font-family: 'Interstate', 'Lucida Sans Demibold', 'Roboto Flex', 'Helvetica', 'Arial', sans-serif;
+ }
+
+ .font-accent {
+   font-family: 'Lucida Sans Demibold', 'Lucida Sans', 'Interstate', 'Helvetica', 'Arial', sans-serif;
+ }
+
+ .font-body {
+   font-family: 'Roboto Flex', 'Lucida Sans', 'Interstate', 'Helvetica', 'Arial', sans-serif;
+ }
+
+ /* Container utilities for consistent page layouts */
+ .relaxed-container {
+   @apply max-w-7xl mx-auto px-6 lg:px-8 py-4;
+   padding-top: var(--spacing-relaxed);
+   padding-bottom: var(--spacing-relaxed);
+ }
+
+ /* Aviation-themed background utilities */
+ .bg-aviation-gradient {
+   background: var(--gradient-aviation);
+ }
+
+ .bg-luxury-gradient {
+   background: var(--gradient-luxury);
+ }
+
+ .bg-relaxed {
+   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+ }
+
+ /* Card components for luxury aviation feel */
+ .card-aviation {
+   @apply bg-white rounded-2xl p-6 lg:p-8 border border-gray-200;
+   box-shadow: var(--shadow-luxury);
+   transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+ }
+
+ .card-aviation:hover {
+   box-shadow: var(--shadow-aviation);
+   transform: translateY(-2px);
+ }
+
+ .card-luxury {
+   @apply text-white rounded-2xl p-6 lg:p-8;
+   background: var(--gradient-luxury);
+   box-shadow: var(--shadow-aviation);
+   transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+ }
+
+ .card-luxury:hover {
+   box-shadow: var(--shadow-aviation), 0 0 20px rgba(194, 165, 66, 0.2);
+   transform: translateY(-2px);
+ }
+
+ /* Enhanced button utilities */
+ .btn-primary {
+   @apply bg-aviationGold hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl;
+   @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+   @apply shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
+   font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
+ }
+
+ .btn-secondary {
+   @apply bg-charcoal-800 hover:bg-charcoal-900 text-white font-semibold py-3 px-6 rounded-xl;
+   @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+   @apply shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-charcoal-500 focus:ring-offset-2;
+   font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
+ }
+
+ .btn-outline {
+   @apply border-2 border-aviationGold text-aviationGold hover:bg-aviationGold hover:text-white;
+   @apply font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+   @apply focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
+   font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
+ }
+
+ /* Navigation utilities */
+ .nav-link {
+   @apply text-gray-700 hover:text-aviationGold font-medium transition-colors duration-200;
+   @apply py-2 px-4 rounded-lg hover:bg-gray-50;
+   font-family: 'Interstate', 'Lucida Sans Demibold', sans-serif;
+ }
+
+ /* Form utilities */
+ .form-input {
+   @apply w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2;
+   @apply focus:ring-aviationGold focus:border-aviationGold focus:outline-none;
+   @apply transition-all duration-200 bg-white text-gray-900;
+   font-family: 'Roboto Flex', sans-serif;
+ }
+
+ .form-label {
+   @apply block text-sm font-semibold text-gray-700 mb-2;
+   font-family: 'Interstate', 'Lucida Sans Demibold', sans-serif;
+ }
+
+ /* ===== Enhanced Existing Classes ===== */
+
+ /* Your existing debug rules enhanced */
+ .bg-aviationGold {
+   background-color: #C2A542 !important;
+ }
+
+ .text-aviationGold {
+   color: #C2A542 !important;
+ }
+
+ /* ===== Animation Classes ===== */
+
+ /* Fade in animation for page loads */
+ .fade-in {
+   animation: fadeIn 0.6s ease-in-out;
+ }
+
+ @keyframes fadeIn {
+   from {
+     opacity: 0;
+     transform: translateY(20px);
+   }
+   to {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ /* Hover lift effect */
+ .hover-lift {
+   transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+ }
+
+ .hover-lift:hover {
+   transform: translateY(-2px);
+   box-shadow: var(--shadow-luxury);
+ }
+
+ /* Gold glow effect for special elements */
+ .gold-glow {
+   box-shadow: 0 0 20px rgba(194, 165, 66, 0.3);
+   transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+ }
+
+ .gold-glow:hover {
+   box-shadow: 0 0 30px rgba(194, 165, 66, 0.5);
+ }
+
+ /* ===== Responsive Utilities ===== */
+
+ /* Mobile-first adjustments */
+ @media (max-width: 768px) {
+   .relaxed-container {
+     @apply px-4 py-2;
+   }
+
+   .card-aviation,
+   .card-luxury {
+     @apply p-4;
+   }
+
+   h1 { @apply text-3xl; }
+   h2 { @apply text-2xl; }
+   h3 { @apply text-xl; }
+ }
+
+ /* ===== Accessibility Enhancements ===== */
+
+ /* High contrast mode support */
+ @media (prefers-contrast: high) {
+   :root {
+     --aviation-gold: #ffcc00;
+     --charcoal-deep: #000000;
+     --soft-gray-bg: #ffffff;
+   }
+ }
+
+ /* Reduced motion support */
+ @media (prefers-reduced-motion: reduce) {
+   *,
+   *::before,
+   *::after {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+   }
+ }
+
+ /* Print styles */
+ @media print {
+   body {
+     @apply bg-white text-black;
+   }
+
+   .card-aviation,
+   .card-luxury {
+     @apply shadow-none border border-gray-300;
+   }
+ }
+ /* ===== Enhanced Header Animations ===== */
+
+/* Smooth logo pulse animation */
+@keyframes logoPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(194, 165, 66, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(194, 165, 66, 0);
+  }
 }
 
-body {
-  @apply text-gray-900 bg-white font-sans;
+.logo-pulse {
+  animation: logoPulse 2s infinite;
 }
 
-/* Ensure Tailwind typography classes work */
-h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-aviationGold;
+/* Enhanced backdrop blur for better browser support */
+.backdrop-blur-custom {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-a {
-  @apply text-aviationGold hover:underline;
+/* Smooth mobile menu animation */
+.mobile-menu-enter {
+  animation: slideDown 0.5s ease-out;
 }
 
-/* Apply Lucida Sans Demibold weight where needed */
-.demibold {
-  font-family: 'Lucida Sans', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 600;
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Placeholder for custom fonts (uncomment and update with actual font files) */
-/*
-@font-face {
-  font-family: 'Lucida Sans Demibold';
-  src: url('/fonts/lucida-sans-demibold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
+/* Enhanced gold glow effect for buttons */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
 }
 
-@font-face {
-  font-family: 'Interstate';
-  src: url('/fonts/interstate-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
 }
-*/
 
-/* Debug rule to ensure aviationGold applies */
-.bg-aviationGold {
-  background-color: #C2A542 !important;
+.btn-glow:hover::before {
+  left: 100%;
 }
-.text-aviationGold {
-  color: #C2A542 !important;
+
+/* Navigation link hover effects */
+.nav-link-hover {
+  position: relative;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C2A542, transparent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
 }
