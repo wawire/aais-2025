@@ -7,14 +7,45 @@
 }
 
 body {
-  @apply text-gray-900 bg-white;
+  @apply text-gray-900 bg-white font-sans;
 }
 
 /* Ensure Tailwind typography classes work */
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold;
+  @apply font-bold text-aviationGold;
 }
 
 a {
   @apply text-aviationGold hover:underline;
+}
+
+/* Apply Lucida Sans Demibold weight where needed */
+.demibold {
+  font-family: 'Lucida Sans', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 600;
+}
+
+/* Placeholder for custom fonts (uncomment and update with actual font files) */
+/*
+@font-face {
+  font-family: 'Lucida Sans Demibold';
+  src: url('/fonts/lucida-sans-demibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Interstate';
+  src: url('/fonts/interstate-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+/* Debug rule to ensure aviationGold applies */
+.bg-aviationGold {
+  background-color: #C2A542 !important;
+}
+.text-aviationGold {
+  color: #C2A542 !important;
 }

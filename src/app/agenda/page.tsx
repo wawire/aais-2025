@@ -4,9 +4,9 @@
  */
 export default function AgendaPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Agenda</h1>
-      <p>Event schedule placeholder.</p>
+      <p className="demibold">Event schedule placeholder.</p>
     </div>
   );
 }
