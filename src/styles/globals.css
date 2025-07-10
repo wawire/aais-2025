@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --aviation-gold: #C2A542;
+}
+
+body {
+  @apply text-gray-900 bg-white;
+}
+
+/* Ensure Tailwind typography classes work */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+}
+
+a {
+  @apply text-aviationGold hover:underline;
+}
