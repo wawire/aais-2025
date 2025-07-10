@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto_Flex } from 'next/font/google';
 import '../styles/globals.css';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
-// Initialize Inter font with subsets
-const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
+// Initialize Roboto Flex font with subsets and weights (600 for Demibold)
+const robotoFlex = Roboto_Flex({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 /**
  * Root layout for AAIS 2025 application.
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'min-h-screen bg-white')}>
+      <body className={cn(robotoFlex.className, 'min-h-screen bg-white font-sans')}>
         <Header />
         <main className="container mx-auto px-4 py-8">{children}</main>
         <Footer />

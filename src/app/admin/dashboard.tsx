@@ -4,9 +4,9 @@
  */
 export default function AdminDashboard(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Admin Dashboard</h1>
-      <p>Admin controls placeholder.</p>
+      <p className="demibold">Admin controls placeholder.</p>
     </div>
   );
 }

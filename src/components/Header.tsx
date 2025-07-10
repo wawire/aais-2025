@@ -24,7 +24,7 @@ export function Header(): JSX.Element {
   return (
     <header className="bg-aviationGold text-white py-4 sticky top-0 z-50">
       <nav className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold" aria-label="AAIS 2025 Home">
+        <Link href="/" className="text-xl font-bold demibold" aria-label="AAIS 2025 Home">
           AAIS 2025
         </Link>
         <ul className="hidden md:flex space-x-4">
@@ -32,7 +32,7 @@ export function Header(): JSX.Element {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn('hover:underline', pathname === link.href ? 'font-bold' : '')}
+                className={cn('hover:underline font-semibold demibold', pathname === link.href ? 'font-bold' : '')}
                 aria-label={link.aria}
               >
                 {link.label}
@@ -54,7 +54,7 @@ export function Header(): JSX.Element {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn('block hover:underline', pathname === link.href ? 'font-bold' : '')}
+                className={cn('block hover:underline font-semibold demibold', pathname === link.href ? 'font-bold' : '')}
                 aria-label={link.aria}
                 onClick={() => setIsMenuOpen(false)}
               >

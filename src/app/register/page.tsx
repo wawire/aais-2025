@@ -4,9 +4,9 @@
  */
 export default function RegisterPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Register</h1>
-      <p>Registration form placeholder.</p>
+      <p className="demibold">Registration form placeholder.</p>
     </div>
   );
 }

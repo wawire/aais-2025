@@ -1,7 +1,7 @@
 #!/bin/bash
 # /aais-2025/init-repo.sh
 
-# Script to set up folder structure, install dependencies, copy files, and perform initial Git commit for AAIS 2025 project.
+# Script to set up folder structure, install dependencies, configure fonts/CSS, and initialize Git for AAIS 2025 project.
 
 # Exit on error
 set -e
@@ -26,7 +26,7 @@ mkdir -p src/app/about src/app/register src/app/agenda src/app/speakers src/app/
 mkdir -p src/components/ui
 mkdir -p src/styles
 mkdir -p src/lib
-mkdir -p public/images
+mkdir -p public/images public/fonts
 
 # Create configuration files
 echo "Creating configuration files..."
@@ -47,15 +47,25 @@ cat > README.md << 'EOF'
 Minimal setup for AAIS 2025 using Next.js 14, PostgreSQL, Prisma, TypeScript, Tailwind CSS, and Shadcn/ui.
 
 ## Setup
-1. Clone: `git clone <repo-url> && cd aais-2025`
+1. Clone: `git clone https://github.com/wawire/aais-2025.git && cd aais-2025`
 2. Install: `npm install`
 3. Configure: Copy `.env.example` to `.env.local`, update `DATABASE_URL`
-4. Database: `npx prisma db push`
-5. Run: `npm run dev`
+4. Fonts: Add Lucida Sans Demibold/Interstate WOFF/WOFF2 files to `/public/fonts/` and update `globals.css`
+5. Database: `npx prisma db push`
+6. Run: `npm run dev`
 
 ## Git Workflow
 - Branches: `main`, `feature/*`
 - Commits: `[type]: description` (e.g., `feat: add layout`)
+
+## Fonts
+- Primary: Roboto Flex (via Google Fonts, weights 400, 600, 700)
+- Fallbacks: Lucida Sans Demibold (system or custom font, weight 600), Interstate (custom font or Helvetica/Arial)
+- Custom Fonts: Place WOFF/WOFF2 files in `/public/fonts/` and update `globals.css` with `@font-face`
+
+## CSS
+- Custom color: `aviationGold` (#C2A542)
+- Tailwind CSS: Configured with `font-sans` for typography
 EOF
 
 # .env.example
@@ -133,6 +143,7 @@ module.exports = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}', // Added broader path to ensure all files are included
   ],
   theme: {
     extend: {
@@ -140,7 +151,7 @@ module.exports = {
         aviationGold: '#C2A542',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Roboto Flex', 'Lucida Sans Demibold', 'Interstate', 'Helvetica', 'Arial', 'sans-serif'],
       },
     },
   },
@@ -231,14 +242,14 @@ echo "Creating source files..."
 # src/app/layout.tsx
 cat > src/app/layout.tsx << 'EOF'
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto_Flex } from 'next/font/google';
 import '../styles/globals.css';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
-// Initialize Inter font with subsets
-const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
+// Initialize Roboto Flex font with subsets and weights (600 for Demibold)
+const robotoFlex = Roboto_Flex({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 /**
  * Root layout for AAIS 2025 application.
@@ -256,7 +267,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'min-h-screen bg-white')}>
+      <body className={cn(robotoFlex.className, 'min-h-screen bg-white font-sans')}>
         <Header />
         <main className="container mx-auto px-4 py-8">{children}</main>
         <Footer />
@@ -294,7 +305,7 @@ export function Header(): JSX.Element {
   return (
     <header className="bg-aviationGold text-white py-4 sticky top-0 z-50">
       <nav className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold" aria-label="AAIS 2025 Home">
+        <Link href="/" className="text-xl font-bold demibold" aria-label="AAIS 2025 Home">
           AAIS 2025
         </Link>
         <ul className="hidden md:flex space-x-4">
@@ -302,7 +313,7 @@ export function Header(): JSX.Element {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn('hover:underline', pathname === link.href ? 'font-bold' : '')}
+                className={cn('hover:underline font-semibold demibold', pathname === link.href ? 'font-bold' : '')}
                 aria-label={link.aria}
               >
                 {link.label}
@@ -324,7 +335,7 @@ export function Header(): JSX.Element {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn('block hover:underline', pathname === link.href ? 'font-bold' : '')}
+                className={cn('block hover:underline font-semibold demibold', pathname === link.href ? 'font-bold' : '')}
                 aria-label={link.aria}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -351,13 +362,13 @@ export function Footer(): JSX.Element {
   return (
     <footer className="bg-gray-800 text-white py-4">
       <div className="container mx-auto px-4 text-center">
-        <p>Email: <a href="mailto:aais@kenya-airways.com" aria-label="Email AAIS">aais@kenya-airways.com</a></p>
-        <p>Phone: <a href="tel:+254716851914" aria-label="Call AAIS">+254 716 851 914</a></p>
+        <p className="demibold">Email: <a href="mailto:aais@kenya-airways.com" className="text-aviationGold" aria-label="Email AAIS">aais@kenya-airways.com</a></p>
+        <p className="demibold">Phone: <a href="tel:+254716851914" className="text-aviationGold" aria-label="Call AAIS">+254 716 851 914</a></p>
         <div className="flex justify-center space-x-4 mt-2">
-          <a href="https://twitter.com/AAIS2025" aria-label="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://linkedin.com/company/AAIS2025" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://twitter.com/AAIS2025" className="text-aviationGold demibold" aria-label="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://linkedin.com/company/AAIS2025" className="text-aviationGold demibold" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
-        <p className="mt-2">© 2025 Kenya Airways PLC</p>
+        <p className="mt-2 demibold">© 2025 Kenya Airways PLC</p>
       </div>
     </footer>
   );
@@ -375,16 +386,47 @@ cat > src/styles/globals.css << 'EOF'
 }
 
 body {
-  @apply text-gray-900 bg-white;
+  @apply text-gray-900 bg-white font-sans;
 }
 
 /* Ensure Tailwind typography classes work */
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold;
+  @apply font-bold text-aviationGold;
 }
 
 a {
   @apply text-aviationGold hover:underline;
+}
+
+/* Apply Lucida Sans Demibold weight where needed */
+.demibold {
+  font-family: 'Lucida Sans', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 600;
+}
+
+/* Placeholder for custom fonts (uncomment and update with actual font files) */
+/*
+@font-face {
+  font-family: 'Lucida Sans Demibold';
+  src: url('/fonts/lucida-sans-demibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Interstate';
+  src: url('/fonts/interstate-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+*/
+
+/* Debug rule to ensure aviationGold applies */
+.bg-aviationGold {
+  background-color: #C2A542 !important;
+}
+.text-aviationGold {
+  color: #C2A542 !important;
 }
 EOF
 
@@ -411,9 +453,9 @@ cat > src/app/page.tsx << 'EOF'
  */
 export default function HomePage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Welcome to AAIS 2025</h1>
-      <p>Home page placeholder.</p>
+      <p className="demibold">Africa Aviation Innovation Summit 2025 - Home page placeholder.</p>
     </div>
   );
 }
@@ -427,9 +469,9 @@ cat > src/app/about/page.tsx << 'EOF'
  */
 export default function AboutPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">About AAIS 2025</h1>
-      <p>Details about the Africa Aviation Innovation Summit.</p>
+      <p className="demibold">Details about the Africa Aviation Innovation Summit.</p>
     </div>
   );
 }
@@ -443,9 +485,9 @@ cat > src/app/register/page.tsx << 'EOF'
  */
 export default function RegisterPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Register</h1>
-      <p>Registration form placeholder.</p>
+      <p className="demibold">Registration form placeholder.</p>
     </div>
   );
 }
@@ -459,9 +501,9 @@ cat > src/app/agenda/page.tsx << 'EOF'
  */
 export default function AgendaPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Agenda</h1>
-      <p>Event schedule placeholder.</p>
+      <p className="demibold">Event schedule placeholder.</p>
     </div>
   );
 }
@@ -475,9 +517,9 @@ cat > src/app/speakers/page.tsx << 'EOF'
  */
 export default function SpeakersPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Speakers</h1>
-      <p>Speaker list placeholder.</p>
+      <p className="demibold">Speaker list placeholder.</p>
     </div>
   );
 }
@@ -491,9 +533,9 @@ cat > src/app/admin/dashboard.tsx << 'EOF'
  */
 export default function AdminDashboard(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Admin Dashboard</h1>
-      <p>Admin controls placeholder.</p>
+      <p className="demibold">Admin controls placeholder.</p>
     </div>
   );
 }
@@ -527,15 +569,16 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 }
 EOF
 
-# Create empty favicon and images directory
+# Create empty favicon and fonts directory
 touch public/favicon.ico
 
 # Initialize Git repository
 echo "Initializing Git repository..."
 git init
 git checkout -b main
+git remote add origin https://github.com/wawire/aais-2025.git
 git add .
-git commit -m "feat: initial project setup for AAIS 2025"
+git commit -m "feat: initial project setup for AAIS 2025 with CSS fixes"
 git branch develop
 
 echo "Setup complete. Run 'chmod +x init-repo.sh' and './init-repo.sh' to execute."

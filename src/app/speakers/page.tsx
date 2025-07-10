@@ -4,9 +4,9 @@
  */
 export default function SpeakersPage(): JSX.Element {
   return (
-    <div>
+    <div className="space-y-4">
       <h1 className="text-3xl font-bold text-aviationGold">Speakers</h1>
-      <p>Speaker list placeholder.</p>
+      <p className="demibold">Speaker list placeholder.</p>
     </div>
   );
 }
