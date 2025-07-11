@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Roboto_Flex } from 'next/font/google';
@@ -69,6 +70,7 @@ export default function RootLayout({
         {/* Layout Structure */}
         <div className="relative z-10 flex flex-col min-h-screen">
           <Header />
+          <Hero />
           <main
             id="main-content"
             role="main"
