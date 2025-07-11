@@ -16,11 +16,10 @@
    --charcoal-deep: #1a202c;
    --charcoal-light: #334155;
    --soft-gray-bg: #e2e8f0;
-   --midnight-blue: #1e3a8a;
    --aviation-orange: #f97316;
 
    /* Gradients for luxury feel */
-   --gradient-aviation: linear-gradient(135deg, #1a202c 0%, #1e3a8a 100%);
+   --gradient-aviation: linear-gradient(135deg, #1a202c 0%, #334155 100%);
    --gradient-luxury: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
 
    /* Spacing scale for relaxed layouts */
@@ -82,28 +81,81 @@
 
  /* Enhanced paragraph styling with Roboto Flex for body text */
  p {
-   @apply text-base lg:text-lg leading-relaxed text-gray-700;
+   @apply text-base text-gray-700;
    font-family: 'Roboto Flex', 'Lucida Sans', 'Interstate', 'Helvetica', 'Arial', sans-serif;
    margin-bottom: var(--spacing-relaxed);
  }
 
- /* Enhanced link styling with smooth transitions */
+ /* ===== Clean Button/Link Styles - No Borders ===== */
+
+ /* Remove all default focus borders and outlines */
+ button,
+ a,
+ input,
+ select,
+ textarea,
+ [tabindex] {
+   outline: none !important;
+   border: none !important;
+   box-shadow: none !important;
+ }
+
+ /* Clean link styling - minimalistic */
  a {
-   @apply text-aviationGold transition-all duration-300;
+   @apply text-aviationGold transition-colors duration-300;
    text-decoration: none;
-   border-bottom: 1px solid transparent;
+   border: none;
+   outline: none;
+   background: transparent;
  }
 
  a:hover {
-   @apply transform;
-   color: var(--midnight-blue);
-   border-bottom-color: currentColor;
+   color: #B8942A; /* Darker aviation gold on hover */
    transform: translateY(-1px);
  }
 
+ a:active,
  a:focus {
-   @apply outline-none ring-2 ring-aviationGold ring-offset-2;
-   border-radius: 0.125rem;
+   color: #B8942A;
+   outline: none;
+   border: none;
+   box-shadow: none;
+ }
+
+ /* Clean button styling - minimalistic */
+ button {
+   @apply text-gray-700 transition-colors duration-300;
+   background: transparent;
+   border: none;
+   outline: none;
+   cursor: pointer;
+ }
+
+ button:hover {
+   @apply text-aviationGold;
+ }
+
+ button:active,
+ button:focus {
+   @apply text-aviationGold;
+   outline: none;
+   border: none;
+   box-shadow: none;
+ }
+
+ /* Remove all focus rings globally but keep accessibility */
+ *:focus {
+   outline: none !important;
+   box-shadow: none !important;
+   border: none !important;
+ }
+
+ /* For keyboard navigation accessibility - subtle background change only */
+ *:focus-visible {
+   @apply bg-gray-50;
+   outline: none;
+   border: none;
+   box-shadow: none;
  }
 
  /* ===== Enhanced Custom Utility Classes ===== */
@@ -178,13 +230,29 @@
    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
    @apply shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
    font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
+   border: none;
+   outline: none;
+ }
+
+ .btn-primary:focus {
+   outline: none;
+   border: none;
+   box-shadow: none;
  }
 
  .btn-secondary {
-   @apply bg-charcoal-800 hover:bg-charcoal-900 text-white font-semibold py-3 px-6 rounded-xl;
+   @apply bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-xl;
    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
-   @apply shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-charcoal-500 focus:ring-offset-2;
+   @apply shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
    font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
+   border: none;
+   outline: none;
+ }
+
+ .btn-secondary:focus {
+   outline: none;
+   border: none;
+   box-shadow: none;
  }
 
  .btn-outline {
@@ -192,21 +260,95 @@
    @apply font-semibold py-3 px-6 rounded-xl transition-all duration-300;
    @apply focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
    font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
+   outline: none;
  }
 
- /* Navigation utilities */
+ .btn-outline:focus {
+   outline: none;
+   border: 2px solid #C2A542;
+   box-shadow: none;
+ }
+
+ /* Navigation utilities - clean */
  .nav-link {
    @apply text-gray-700 hover:text-aviationGold font-medium transition-colors duration-200;
    @apply py-2 px-4 rounded-lg hover:bg-gray-50;
    font-family: 'Interstate', 'Lucida Sans Demibold', sans-serif;
+   border: none;
+   outline: none;
+   background: transparent;
+   text-decoration: none;
+ }
+
+ .nav-link:active,
+ .nav-link:focus {
+   @apply text-aviationGold;
+   outline: none;
+   border: none;
+   box-shadow: none;
+ }
+
+ /* Clean header navigation */
+ header nav a,
+ header nav button {
+   @apply text-white font-semibold transition-colors duration-300;
+   border: none !important;
+   outline: none !important;
+   background: transparent;
+   text-decoration: none;
+   box-shadow: none !important;
+ }
+
+ header nav a:hover,
+ header nav button:hover {
+   @apply text-gray-200;
+ }
+
+ header nav a:active,
+ header nav a:focus,
+ header nav button:active,
+ header nav button:focus {
+   @apply text-gray-200;
+   outline: none !important;
+   border: none !important;
+   box-shadow: none !important;
+ }
+
+ /* Footer links - clean */
+ footer a {
+   @apply transition-colors duration-300;
+   border: none;
+   outline: none;
+   text-decoration: none;
+ }
+
+ footer a:hover {
+   @apply text-aviationGold;
+ }
+
+ footer a:active,
+ footer a:focus {
+   @apply text-aviationGold;
+   outline: none;
+   border: none;
+   box-shadow: none;
  }
 
  /* Form utilities */
  .form-input {
-   @apply w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2;
-   @apply focus:ring-aviationGold focus:border-aviationGold focus:outline-none;
-   @apply transition-all duration-200 bg-white text-gray-900;
+   @apply w-full px-4 py-3 rounded-xl border-0 bg-gray-50;
+   @apply focus:bg-white focus:ring-0 focus:outline-none;
+   @apply transition-all duration-200 text-gray-900;
    font-family: 'Roboto Flex', sans-serif;
+   box-shadow: none;
+   border: none;
+   outline: none;
+ }
+
+ .form-input:focus {
+   outline: none;
+   border: none;
+   box-shadow: none;
  }
 
  .form-label {
@@ -314,6 +456,7 @@
      @apply shadow-none border border-gray-300;
    }
  }
+
  /* ===== Enhanced Header Animations ===== */
 
 /* Smooth logo pulse animation */
@@ -378,23 +521,44 @@
   left: 100%;
 }
 
-/* Navigation link hover effects */
+/* Navigation link hover effects - clean without borders */
 .nav-link-hover {
   position: relative;
-}
-
-.nav-link-hover::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #C2A542, transparent);
   transition: all 0.3s ease;
-  transform: translateX(-50%);
+  border: none;
+  outline: none;
 }
 
-.nav-link-hover:hover::after {
-  width: 100%;
+.nav-link-hover:hover {
+  color: #C2A542;
+  transform: translateY(-1px);
+}
+
+.nav-link-hover:focus,
+.nav-link-hover:active {
+  color: #C2A542;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Mobile menu button - clean */
+.mobile-menu-button {
+  @apply text-white transition-colors duration-300;
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+.mobile-menu-button:hover {
+  @apply text-gray-200;
+}
+
+.mobile-menu-button:active,
+.mobile-menu-button:focus {
+  @apply text-gray-200;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
