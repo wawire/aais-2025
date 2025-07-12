@@ -21,17 +21,24 @@ const DEFAULT_LOGO_CONFIG: LogoConfig = {
     src: '/images/aais2025-logo-secondary.svg',
     alt: 'AAIS 2025 - Africa Aviation Innovation Summit',
   },
-  width: 160,
-  height: 48,
+  width: 250,
+  height: 96,
 } as const;
 
 const DEFAULT_NAVIGATION_ITEMS: readonly NavigationItem[] = [
+   {
+    id: 'About',
+    label: 'About the Summit',
+    href: '/about',
+    ariaLabel: 'Learn more about AAIS 2025',
+  },
   {
     id: 'agenda',
     label: 'Agenda',
     href: '/agenda',
     ariaLabel: 'View event agenda and schedule',
   },
+
   {
     id: 'speakers',
     label: 'Speakers',
@@ -60,7 +67,7 @@ const DEFAULT_NAVIGATION_ITEMS: readonly NavigationItem[] = [
 
 /**
  * Enterprise-grade transparent header component for AAIS 2025
- * Simplified mobile layout with logo hidden on mobile, hamburger on right
+ * Enhanced z-index and clickability fixes
  */
 const TransparentHeader = memo<TransparentHeaderProps>(({
   className = '',
@@ -105,12 +112,12 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isMobileMenuOpen]);
 
-  // Memoize header classes for performance
+  // Enhanced header classes with higher z-index
   const headerClasses = useMemo(() => `
-    fixed top-0 left-0 right-0 z-50 w-full
+    fixed top-0 left-0 right-0 z-[100] w-full
     transition-all duration-300 ease-in-out
     ${isScrolled
-      ? 'bg-white/10 backdrop-blur-md shadow-luxury'
+      ? 'bg-white/95 backdrop-blur-md shadow-lg'
       : 'bg-transparent'
     }
     ${className}
@@ -121,9 +128,9 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
     w-[90%] mx-auto px-4 sm:px-6 lg:px-8
   `, []);
 
-  // Simplified mobile layout
+  // Enhanced inner container with better positioning
   const innerContainerClasses = useMemo(() => `
-    w-full flex items-center
+    w-full flex items-center relative z-10
     h-16 md:h-20 lg:h-24
   `, []);
 
@@ -160,16 +167,16 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
             {/* Desktop Layout */}
             <div className="hidden md:contents">
               {/* Left Section - Logo (desktop only) */}
-              <div className="flex-shrink-0 w-auto">
+              <div className="flex-shrink-0 w-auto relative z-20">
                 <LogoTransition
                   isScrolled={isScrolled}
                   config={logoConfig}
-                  className="h-8 md:h-10 lg:h-12 w-auto"
+                  className="h-10 md:h-12 lg:h-16 w-auto"
                 />
               </div>
 
               {/* Center Section - Navigation (desktop only) */}
-              <div className="flex-1 flex justify-center items-center px-8">
+              <div className="flex-1 flex justify-center items-center px-8 relative z-20">
                 <nav role="navigation" aria-label="Main navigation" className="w-full max-w-4xl">
                   <ul className="flex items-center justify-center space-x-6 lg:space-x-8 xl:space-x-10 list-none">
                     {regularItems.map((item) => (
@@ -178,14 +185,14 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
                           href={item.href}
                           onClick={() => handleItemClick(item)}
                           className={`
-                            relative px-3 py-3 font-medium transition-all duration-300 whitespace-nowrap
+                            relative px-3 py-3 font-medium transition-all duration-300 whitespace-nowrap z-30
                             text-body-md lg:text-body-lg hover:text-body-md lg:hover:text-body-lg focus:text-body-md lg:focus:text-body-lg
                             ${isScrolled
                               ? 'text-charcoal-700 hover:text-aviationGold focus:text-aviationGold'
                               : 'text-white hover:text-aviationGold focus:text-aviationGold'
                             }
                             focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2
-                            active:scale-95 transform
+                            active:scale-95 transform cursor-pointer
                           `}
                           style={{ listStyle: 'none' }}
                           aria-label={item.ariaLabel || `Navigate to ${item.label}`}
@@ -201,14 +208,14 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
               </div>
 
               {/* Right Section - Register Button (desktop only) */}
-              <div className="flex-shrink-0 flex items-center">
+              <div className="flex-shrink-0 flex items-center relative z-20">
                 {registerItem && (
                   <Link
                     href={registerItem.href}
                     onClick={() => handleItemClick(registerItem)}
                     className={`
-                      inline-flex items-center px-6 py-3 rounded-lg font-semibold whitespace-nowrap
-                      text-body-lg transition-all duration-300 transform
+                      inline-flex items-center px-6 py-3 rounded-lg font-semibold whitespace-nowrap z-30
+                      text-body-lg transition-all duration-300 transform cursor-pointer
                       ${isScrolled
                         ? 'bg-aviationGold text-white hover:bg-aviationGold/90 focus:bg-aviationGold/90'
                         : 'bg-aviationGold text-white hover:bg-aviationGold/90 focus:bg-aviationGold/90'
@@ -225,13 +232,13 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
               </div>
             </div>
 
-            {/* Mobile Layout - Only Hamburger on Right */}
-            <div className="md:hidden w-full flex justify-end">
+            {/* Mobile Layout - Enhanced clickability */}
+            <div className="md:hidden w-full flex justify-end relative z-30">
               <button
                 type="button"
                 onClick={toggleMobileMenu}
                 className={`
-                  p-3 rounded-lg transition-all duration-300 relative z-50
+                  p-3 rounded-lg transition-all duration-300 relative z-[110] cursor-pointer
                   ${isScrolled
                     ? 'text-charcoal-700 hover:text-aviationGold'
                     : 'text-white hover:text-aviationGold'
@@ -270,15 +277,15 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
         </div>
       </header>
 
-      {/* Mobile Navigation Menu - Updated to pass logoConfig and items */}
-<MobileNavigation
-  logoConfig={logoConfig}
-  items={navigationItems}
-  isOpen={isMobileMenuOpen}
-  isScrolled={isScrolled}
-  onClose={closeMobileMenu}
-  onNavigate={handleMobileNavigate}
-/>
+      {/* Mobile Navigation Menu */}
+      <MobileNavigation
+        logoConfig={logoConfig}
+        items={navigationItems}
+        isOpen={isMobileMenuOpen}
+        isScrolled={isScrolled}
+        onClose={closeMobileMenu}
+        onNavigate={handleMobileNavigate}
+      />
     </>
   );
 });

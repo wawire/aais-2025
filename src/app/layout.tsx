@@ -1,3 +1,4 @@
+// app/layout.tsx
 import { Footer } from '@/components/layout/Footer';
 import { TransparentHeader } from '@/components/layout/TransparentHeader';
 import { cn } from '@/lib/utils';
@@ -56,7 +57,7 @@ export default function RootLayout({
           <main
             id="main-content"
             role="main"
-            className="flex-1 container mx-auto px-4 py-8 focus:outline-none text-charcoal-900"
+            className="flex-1 focus:outline-none text-charcoal-900"
           >
             {children}
           </main>

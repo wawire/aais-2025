@@ -1,3 +1,5 @@
+// app/page.tsx
+import { Hero } from '@/components/Hero';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,13 +9,19 @@ export const metadata: Metadata = {
 
 /**
  * Home page for AAIS 2025.
- * Features hero section with call-to-action and key information.
+ * Features full-width hero section with call-to-action and key information.
  */
 export default function HomePage(): JSX.Element {
   return (
-    <div className="text-content">
-      {/* Hero Section */}
+    <>
 
-    </div>
+      <Hero />
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-7xl mx-auto">
+          // Section content
+        </div>
+      </section>
+
+    </>
   );
 }
