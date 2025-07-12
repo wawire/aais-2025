@@ -1,6 +1,5 @@
 /**
  * AAIS 2025 Aviation Event Management System - Enhanced Global Styles
- * Building on existing configuration with luxury aviation theme
  */
 
  @tailwind base;
@@ -199,6 +198,41 @@
  .bg-relaxed {
    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
  }
+ /* Hero background classes - STATIC ONLY */
+.bg-hero-default {
+  background-image: url('/images/hero-section.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-hero-about {
+  background-image: url('/images/about-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-hero-register {
+  background-image: url('/images/register-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-hero-speakers {
+  background-image: url('/images/speakers-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-hero-agenda {
+  background-image: url('/images/agenda-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
  /* Card components for luxury aviation feel */
  .card-aviation {
@@ -228,7 +262,7 @@
  .btn-primary {
    @apply bg-aviationGold hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl;
    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
-   @apply shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
+   @apply shadow-lg hover:shadow-xl  focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
    font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
    border: none;
    outline: none;
