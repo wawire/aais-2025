@@ -3,15 +3,13 @@ module.exports = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
-    './src/**/*.{js,ts,jsx,tsx}', // Your existing broader path
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       // Enhanced color palette while keeping your aviationGold
       colors: {
-        aviationGold: '#C2A542', // Your exact color
-
-        // Additional aviation-inspired colors for luxury feel
+        aviationGold: '#C2A542',
         charcoal: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -22,15 +20,13 @@ module.exports = {
           600: '#475569',
           700: '#334155',
           800: '#1e293b',
-          900: '#1a202c', // Deep charcoal for luxury backgrounds
+          900: '#1a202c',
           950: '#0f172a',
         },
-
-        // Soft grays for relaxed backgrounds
         softGray: {
           50: '#f8fafc',
           100: '#f1f5f9',
-          200: '#e2e8f0', // Light background
+          200: '#e2e8f0',
           300: '#cbd5e1',
           400: '#94a3b8',
           500: '#64748b',
@@ -39,8 +35,6 @@ module.exports = {
           800: '#1e293b',
           900: '#0f172a',
         },
-
-        // Midnight blue for accents
         midnightBlue: {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -50,19 +44,17 @@ module.exports = {
           500: '#3b82f6',
           600: '#2563eb',
           700: '#1d4ed8',
-          800: '#1e3a8a', // Aviation blue
+          800: '#1e3a8a',
           900: '#1e40af',
           950: '#172554',
         },
-
-        // Orange accents as mentioned in your design system
         aviationOrange: {
           50: '#fff7ed',
           100: '#ffedd5',
           200: '#fed7aa',
           300: '#fdba74',
           400: '#fb923c',
-          500: '#f97316', // Primary orange
+          500: '#f97316',
           600: '#ea580c',
           700: '#c2410c',
           800: '#9a3412',
@@ -70,17 +62,16 @@ module.exports = {
         },
       },
 
-      // Your exact font configuration enhanced
+      // Enhanced typography configuration
       fontFamily: {
         sans: [
-          'Roboto Flex',           // Your primary font (body paragraphs)
-          'Lucida Sans Demibold',  // Your accent font
-          'Interstate',            // Your heading font
+          'Roboto Flex',
+          'Lucida Sans Demibold',
+          'Interstate',
           'Helvetica',
           'Arial',
           'sans-serif'
         ],
-        // Adding specific font stacks based on your design system
         heading: [
           'Interstate',
           'Lucida Sans Demibold',
@@ -107,29 +98,101 @@ module.exports = {
         ],
       },
 
+      // Typography scale for aviation luxury theme
+      fontSize: {
+        // Display sizes for hero sections
+        'display-2xl': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }], // 72px
+        'display-xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }], // 60px
+        'display-lg': ['3rem', { lineHeight: '1.15', letterSpacing: '-0.01em' }],    // 48px
+
+        // Heading sizes
+        'heading-xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }], // 36px
+        'heading-lg': ['1.875rem', { lineHeight: '1.25', letterSpacing: '-0.005em' }], // 30px
+        'heading-md': ['1.5rem', { lineHeight: '1.3', letterSpacing: '0em' }],      // 24px
+        'heading-sm': ['1.25rem', { lineHeight: '1.35', letterSpacing: '0em' }],    // 20px
+
+        // Body text
+        'body-xl': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0em' }],       // 18px
+        'body-lg': ['1rem', { lineHeight: '1.65', letterSpacing: '0em' }],          // 16px
+        'body-md': ['0.875rem', { lineHeight: '1.7', letterSpacing: '0.01em' }],    // 14px
+        'body-sm': ['0.75rem', { lineHeight: '1.75', letterSpacing: '0.02em' }],    // 12px
+
+        // Specialty sizes
+        'caption': ['0.6875rem', { lineHeight: '1.6', letterSpacing: '0.03em' }],   // 11px
+        'overline': ['0.625rem', { lineHeight: '1.5', letterSpacing: '0.1em' }],    // 10px
+      },
+
+      // Enhanced font weights
+      fontWeight: {
+        hairline: '100',
+        thin: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        black: '900',
+      },
+
+      // Letter spacing refinements
+      letterSpacing: {
+        tightest: '-0.025em',
+        tighter: '-0.02em',
+        tight: '-0.01em',
+        normal: '0em',
+        wide: '0.01em',
+        wider: '0.02em',
+        widest: '0.1em',
+      },
+
+      // Line height improvements
+      lineHeight: {
+        none: '1',
+        tight: '1.1',
+        snug: '1.15',
+        normal: '1.25',
+        relaxed: '1.35',
+        comfortable: '1.5',
+        loose: '1.65',
+        extra: '1.75',
+      },
+
       // Enhanced spacing for relaxed luxury feel
       spacing: {
-        '18': '4.5rem',   // 72px
-        '22': '5.5rem',   // 88px
-        '26': '6.5rem',   // 104px
-        '30': '7.5rem',   // 120px
-        '128': '32rem',   // 512px
-        '144': '36rem',   // 576px
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
+        '128': '32rem',
+        '144': '36rem',
       },
 
-      // Sophisticated border radius for modern aesthetics
-      borderRadius: {
-        'xl': '0.75rem',  // 12px
-        '2xl': '1rem',    // 16px
-        '3xl': '1.5rem',  // 24px
-        '4xl': '2rem',    // 32px
-      },
-
-      // Custom shadows for luxury depth
-      boxShadow: {
-        'luxury': '0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'aviation': '0 20px 25px -5px rgba(26, 32, 44, 0.1), 0 10px 10px -5px rgba(26, 32, 44, 0.04)',
-        'gold-glow': '0 0 20px rgba(194, 165, 66, 0.3)',
+      // Typography-specific margins and padding
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '75ch',
+            color: 'var(--tw-prose-body)',
+            lineHeight: '1.65',
+            fontSize: '1rem',
+            fontFamily: 'Roboto Flex, sans-serif',
+          },
+        },
+        lg: {
+          css: {
+            fontSize: '1.125rem',
+            lineHeight: '1.6',
+            maxWidth: '70ch',
+          },
+        },
+        xl: {
+          css: {
+            fontSize: '1.25rem',
+            lineHeight: '1.55',
+            maxWidth: '65ch',
+          },
+        },
       },
 
       // Smooth transitions for premium feel
@@ -140,7 +203,6 @@ module.exports = {
     },
   },
 
-  // Essential plugins for production-ready styling
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
