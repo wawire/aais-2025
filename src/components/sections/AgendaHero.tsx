@@ -1,25 +1,24 @@
-import React from 'react';
 import BaseHero from '../ui/BaseHero';
 
+/**
+ * AgendaHero component for the AAIS 2025 agenda page
+
+ */
 const AgendaHero: React.FC = () => {
   return (
     <BaseHero
       backgroundClass="bg-hero-agenda"
       overlay="aviation"
-      className="pt-32 md:pt-40 pb-16"
+      className="pt-30 md:pt-40 pb-10 md:pb-20"
     >
-      <div className="w-full max-w-5xl mx-auto text-center">
-        <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-          AAIS 2025 Summit
-          <span className="block text-aviationGold mt-1 text-2xl md:text-3xl lg:text-4xl">
-            Program Schedule
-          </span>
+      <div className="text-center mb-10 max-w-4xl mx-auto  pb-4">
+        <h1 className="text-4xl md:text-5xl font-bold font-heading text-aviationGold mb-2">
+          Africa Aviation Innovation Summit 2025 Agenda
         </h1>
-
-        <p className="font-body text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-8">
-          Two days of keynotes, panels, workshops, and networking focused on
-          investing in Africa's aviation future through innovation.
+        <p className="text-xl font-body text-gray-300">
+          Theme: Investing in Africa’s Aviation Future: Unlocking Opportunities for Growth and Transformation through Innovation
         </p>
+        <p className="text-md text-gray-400 mt-1">Mombasa, Kenya • 06th – 07th November 2025</p>
       </div>
     </BaseHero>
   );

@@ -262,7 +262,7 @@
  .btn-primary {
    @apply bg-aviationGold hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl;
    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
-   @apply shadow-lg hover:shadow-xl  focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
+   @apply shadow-lg hover:shadow-xl  hover:text-white focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2;
    font-family: 'Lucida Sans Demibold', 'Interstate', sans-serif;
    border: none;
    outline: none;
@@ -389,7 +389,30 @@
    @apply block text-sm font-semibold text-gray-700 mb-2;
    font-family: 'Interstate', 'Lucida Sans Demibold', sans-serif;
  }
+/* Book-style animations */
+.book-page {
+  transition: transform 0.3s ease;
+}
 
+.book-page:hover {
+  transform: translateY(-2px);
+}
+
+/* Print styles for book layout */
+@media print {
+  .grid {
+    display: flex !important;
+  }
+
+  .lg\\:grid-cols-2 > * {
+    flex: 1;
+    page-break-inside: avoid;
+  }
+
+  .shadow-2xl {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb;
+  }}
  /* ===== Enhanced Existing Classes ===== */
 
  /* Your existing debug rules enhanced */
