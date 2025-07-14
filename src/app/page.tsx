@@ -1,5 +1,10 @@
 // app/page.tsx
+// import { EventHighlights } from '@/components/EventHilights';
 import { Hero } from '@/components/Hero';
+import { EventHighlights } from '@/components/sections/EventHighlights';
+import { Registration } from '@/components/sections/Registration';
+import { SponsorsPartners } from '@/components/sections/SponsorsPartners';
+import { WhyAttend } from '@/components/sections/WhyAttend';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,18 +14,17 @@ export const metadata: Metadata = {
 
 /**
  * Home page for AAIS 2025.
- * Features full-width hero section with call-to-action and key information.
  */
 export default function HomePage(): JSX.Element {
   return (
     <>
 
       <Hero />
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-7xl mx-auto">
-          // Section content
-        </div>
-      </section>
+      <EventHighlights />
+      <WhyAttend />
+      <Registration />
+      <SponsorsPartners/>
+
 
     </>
   );
