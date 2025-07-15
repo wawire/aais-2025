@@ -86,7 +86,7 @@ const DEFAULT_SOCIAL_LINKS: readonly SocialLink[] = [
 ] as const;
 
 const DEFAULT_CONTACT_INFO: ContactInfo = {
-  email: 'info@aais2025.com',
+  email: 'aais@kenya-airways.com',
   phone: '+254 716 851 914',
   address: {
     street: 'Diani Reef Resort & Spa',

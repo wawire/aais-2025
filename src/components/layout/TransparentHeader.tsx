@@ -228,7 +228,7 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
                   >
                     Register Now
                   </Link>
-                )}
+                )}\
               </div>
             </div>
 

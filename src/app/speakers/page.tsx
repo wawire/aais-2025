@@ -12,8 +12,8 @@ export default function SpeakersPage(): JSX.Element {
     <div className="space-y-4">
       <SpeakersHero/>
       <SpeakerGrid />
-      <PanelistGrid />
-      <ModeratorGrid/>
+      {/* <PanelistGrid /> */}
+      {/* <ModeratorGrid/> */}
     </div>
   );
 }

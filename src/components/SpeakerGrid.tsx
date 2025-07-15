@@ -27,59 +27,24 @@ interface Speaker {
 const speakers: Speaker[] = [
   {
     id: 1,
-    name: 'Dr. Amina Hassan',
-    title: 'CEO, African Aviation Development Bank',
-    bio: 'Dr. Amina Hassan leads continental aviation financing initiatives, having facilitated over $2.5 billion in infrastructure investments across 25 African countries. With expertise in sustainable aviation fuel development and airport modernization, she champions the Single African Air Transport Market (SAATM) and drives digital transformation in African aviation. Her leadership in public-private partnerships has revolutionized regional connectivity and cargo operations.',
-    photo: '/speakers/amina-hassan.jpg', // Developer: Replace with actual photo
+    name: 'ALLAN KILAVUKA',
+    title: 'Group MD & CEO, Kenya Airways; Chairperson of the Executive Committee, AFRAA',
+    bio: 'Allan Kilavuka leads Kenya Airways as Group Managing Director and CEO, serving simultaneously as Chairperson of the Executive Committee at the African Airlines Association (AFRAA). With extensive aviation industry experience, he champions African aviation development, regional connectivity, and sustainable growth initiatives. His leadership drives innovation in airline operations, strategic partnerships, and the advancement of the Single African Air Transport Market (SAATM) across the continent.',
+    photo: '/images/speakers/allan.jpeg', 
   },
   {
     id: 2,
-    name: 'Captain James Mwangi',
-    title: 'Director of Flight Operations, Pan-African Airlines Alliance',
-    bio: 'Captain James Mwangi brings 25 years of aviation experience, leading safety innovations and operational excellence across African skies. As a certified aviation sustainability auditor, he spearheads green flight operations and advanced air mobility initiatives. His expertise in pilot training and regulatory compliance has enhanced safety standards across 15 African carriers, positioning the continent for next-generation aviation technologies.',
-    photo: '/speakers/james-mwangi.jpg', // Developer: Replace with actual photo
+    name: 'ABDERAHMANE BERTHÉ',
+    title: 'Secretary General, African Civil Aviation Commission (AFCAC)',
+    bio: 'Abderahmane Berthé serves as Secretary General of the African Civil Aviation Commission (AFCAC), leading continental aviation policy development and regulatory harmonization. With expertise in aviation safety, security, and infrastructure development, he spearheads initiatives to strengthen African aviation through improved regulatory frameworks, capacity building, and regional cooperation. His work focuses on enhancing aviation safety standards and promoting sustainable aviation development across Africa.',
+    photo: '/images/speakers/berthe.jpg',
   },
   {
     id: 3,
-    name: 'Sarah Okonkwo',
-    title: 'Chief Innovation Officer, West African Air Transport',
-    bio: 'Sarah Okonkwo pioneers digital aviation solutions and smart airport technologies across West Africa. Her leadership in drone integration and urban air mobility has positioned Lagos and Accra as innovation hubs. With expertise in AI-powered logistics and passenger experience optimization, she drives the region\'s transformation into a competitive aviation market, attracting over $500 million in tech investments.',
-    photo: '/speakers/sarah-okonkwo.jpg', // Developer: Replace with actual photo
-  },
-  {
-    id: 4,
-    name: 'Mohamed Al-Rashid',
-    title: 'Chairman, North African Aviation Consortium',
-    bio: 'Mohamed Al-Rashid orchestrates strategic partnerships connecting North African aviation with global markets. His expertise in cross-border regulatory harmonization and cargo hub development has increased regional air freight by 300%. As an advocate for sustainable aviation fuels and carbon-neutral operations, he leads initiatives that balance economic growth with environmental stewardship across the Maghreb region.',
-    photo: '/speakers/mohamed-al-rashid.jpg', // Developer: Replace with actual photo
-  },
-  {
-    id: 5,
-    name: 'Dr. Grace Nyong',
-    title: 'Head of Aviation Sustainability, African Union Commission',
-    bio: 'Dr. Grace Nyong leads continental efforts in sustainable aviation development and climate-resilient infrastructure. Her research in alternative fuels and green airport design has influenced AU aviation policies affecting 54 member states. With expertise in carbon offset mechanisms and environmental impact assessment, she ensures Africa\'s aviation growth aligns with global climate commitments and sustainable development goals.',
-    photo: '/speakers/grace-nyong.jpg', // Developer: Replace with actual photo
-  },
-  {
-    id: 6,
-    name: 'Robert Kimani',
-    title: 'Managing Director, East African Aviation Hub',
-    bio: 'Robert Kimani transforms East Africa into a premier aviation destination through strategic infrastructure development and regional integration. His leadership in cargo operations and maintenance, repair, and overhaul (MRO) services has positioned the region as a competitive hub. With expertise in public-private partnerships and aviation finance, he attracts international investment while building local capacity.',
-    photo: '/speakers/robert-kimani.jpg', // Developer: Replace with actual photo
-  },
-  {
-    id: 7,
-    name: 'Dr. Fatima Diallo',
-    title: 'Director, African Aviation Research Institute',
-    bio: 'Dr. Fatima Diallo leads cutting-edge research in aviation technology and workforce development across Africa. Her studies on pilot training optimization and aircraft maintenance innovations have reduced operational costs by 25% for participating airlines. As an expert in gender inclusion and youth engagement in aviation, she champions diversity initiatives that are building the next generation of African aviation leaders.',
-    photo: '/speakers/fatima-diallo.jpg', // Developer: Replace with actual photo
-  },
-  {
-    id: 8,
-    name: 'David Mthembu',
-    title: 'CEO, Southern African Aviation Investment Fund',
-    bio: 'David Mthembu mobilizes capital for aviation infrastructure and technology investments across Southern Africa. His portfolio includes airport expansions, fleet modernization, and startup incubation programs worth over $1.8 billion. With expertise in fintech integration and digital payment systems for aviation, he drives innovation that makes air travel more accessible and efficient for African communities.',
-    photo: '/speakers/david-mthembu.jpg', // Developer: Replace with actual photo
+    name: 'HELLEN M. MWARIRI',
+    title: 'Chief Strategy & Innovation Officer, Kenya Airways',
+    bio: 'Hellen M. Mwariri leads strategic innovation and transformation initiatives at Kenya Airways as Chief Strategy & Innovation Officer. Her expertise spans digital transformation, operational excellence, and strategic business development within the aviation sector. She drives innovation in customer experience, operational efficiency, and sustainable aviation practices, positioning Kenya Airways for competitive advantage in the evolving African aviation landscape.',
+    photo: '/images/speakers/Hellen-Mwariri-Mathuka.jpg', 
   },
 ];
 
@@ -219,10 +184,10 @@ const SpeakerModal = ({ speaker, onClose }: SpeakerModalProps) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Flex Layout: Photo (1/3) + Content (2/3) */}
-        <div className="flex flex-row items-stretch">
+        <div className="flex flex-col md:flex-row items-stretch">
           {/* Left Side - Speaker Photo */}
-          <div className="w-1/3 relative bg-gray-100">
-            <div className="h-full min-h-[500px]">
+          <div className="w-full md:w-1/3 relative bg-gray-100">
+            <div className="h-64 md:h-full md:min-h-[500px]">
               <Image
                 src={imageSrc}
                 alt={`${speaker.name} - ${speaker.title}`}
@@ -236,7 +201,7 @@ const SpeakerModal = ({ speaker, onClose }: SpeakerModalProps) => {
           </div>
 
           {/* Right Side - Speaker Information */}
-          <div className="w-2/3 p-8 flex flex-col">
+          <div className="w-full md:w-2/3 p-8 flex flex-col">
             <div className="flex justify-between items-start mb-4">
               <div className="flex-1">
                 <h2
@@ -315,7 +280,7 @@ const SpeakerGrid = () => {
   return (
     <section className="py-12 bg-white" aria-labelledby="speakers-heading">
       {/* Header Section */}
-      <div className="padding-container max-container mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <h2
           id="speakers-heading"
           className="text-3xl font-bold text-[#C2A542] mb-4"
@@ -327,7 +292,7 @@ const SpeakerGrid = () => {
         <div className="relative flex items-center justify-center mb-6">
           <hr className="w-full border-gray-300" />
           <span className="absolute right-0 bg-white px-2 text-[#C2A542]">
-            {/* Aviation-themed SVG Icon - Developer: Replace with preferred icon */}
+            {/* Aviation-themed SVG Icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -356,7 +321,7 @@ const SpeakerGrid = () => {
 
       {/* Speakers Grid */}
       <div className="flex items-center justify-center">
-        <div className="padding-container max-container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
             {memoizedSpeakers.map((speaker) => (
               <SpeakerCard
