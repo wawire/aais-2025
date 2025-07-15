@@ -1,9 +1,21 @@
+// components/NavigationMenu/NavigationMenu.tsx
 'use client';
 
 import { useKeyboardNavigation } from '@/hooks/useKeyboardNavigation';
-import type { NavigationEventHandler, NavigationItem } from '@/types/navigation.types';
 import Link from 'next/link';
 import { memo, useState } from 'react';
+
+// --- Start: Added types directly here ---
+interface NavigationItem {
+  id: string;
+  label: string;
+  href: string;
+  external?: boolean;
+  ariaLabel?: string;
+}
+
+type NavigationEventHandler = (item: NavigationItem) => void;
+// --- End: Added types directly here ---
 
 interface NavigationMenuProps {
   readonly items: readonly NavigationItem[];
@@ -67,7 +79,7 @@ const NavigationMenu = memo<NavigationMenuProps>(({
                   ${focusedIndex === index ? 'ring-2 ring-aviationGold ring-offset-2' : ''}
                 `}
                 style={{ listStyle: 'none' }}
-                aria-label={item.ariaLabel || `Navigate to ${item.label}`}
+                aria-label={item.ariaLabel || `Maps to ${item.label}`}
                 target={item.external ? '_blank' : undefined}
                 rel={item.external ? 'noopener noreferrer' : undefined}
                 onFocus={() => setFocusedIndex(index)}

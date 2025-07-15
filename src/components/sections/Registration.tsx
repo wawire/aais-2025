@@ -59,7 +59,7 @@ export function Registration(): JSX.Element {
         "Gala dinner access"
       ],
       highlighted: true,
-      deadline: "Deadline: October 1, 2025"
+      deadline: "Deadline: September 1, 2025"
     },
     {
       name: "Standard",
@@ -160,8 +160,8 @@ export function Registration(): JSX.Element {
         "Largest, most prominent exhibition space",
         "VIP Lounge access for exclusive networking",
         "Special recognition in all media coverage",
-        "Invitation to exclusive VIP dinner",
-        "12 VIP passes"
+        "Invitation to Gala Dinner dinner",
+        "10 VIP passes"
       ],
       availability: "2 slots available"
     },
@@ -174,9 +174,9 @@ export function Registration(): JSX.Element {
         "Keynote or fireside chat speaking opportunity",
         "Prominent exhibition booth",
         "VIP Lounge access for private networking",
-        "Dedicated media feature and press release mention",
-        "Invitation to exclusive VIP dinner",
-        "10 VIP passes"
+        " Media feature and press release mention",
+        "Invitation to Gala Dinner dinner",
+        "8 VIP passes"
       ],
       availability: "3 slots available",
       highlighted: true
@@ -190,8 +190,8 @@ export function Registration(): JSX.Element {
         "Panel discussion seat",
         "Premium exhibition booth",
         "Access to networking sessions & speaker lounge",
-        "Dedicated sponsor highlight across social media",
-        "Invitation to VIP networking cocktail",
+        " Sponsor highlight across social media",
+        "Invitation to Gala Dinner dinner",
         "6 VIP passes"
       ],
       availability: "4 slots available"
@@ -206,6 +206,7 @@ export function Registration(): JSX.Element {
         "Basic exhibition space",
         "General networking access",
         "Social media mentions",
+         "Invitation to Gala Dinner dinner",
         "4 VIP passes"
       ],
       availability: "Unlimited slots"
@@ -219,6 +220,7 @@ export function Registration(): JSX.Element {
         "Mention in event brochure",
         "Basic exhibition space",
         "General networking access",
+        "Invitation to Gala Dinner dinner",
         "Social media mentions",
         "2 VIP passes"
       ],

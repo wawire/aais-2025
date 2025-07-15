@@ -169,10 +169,12 @@ export default function AboutPage(): JSX.Element {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <button className="bg-aviationGold text-white px-8 py-3 rounded-lg font-medium hover:bg-aviationGold-600 transition-colors duration-200 flex items-center space-x-2">
-                <span>Register Now</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
+           <a href="/register" className="inline-block"> {/* Added anchor tag */}
+  <button className="bg-aviationGold text-white px-8 py-3 rounded-lg font-medium hover:bg-aviationGold-600 transition-colors duration-200 flex items-center space-x-2">
+    <span>Register Now</span>
+    <ArrowRight className="h-4 w-4" />
+  </button>
+</a>
 
               <div className="flex gap-3">
                 <button className="flex items-center space-x-2 bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">

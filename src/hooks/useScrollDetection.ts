@@ -1,7 +1,11 @@
+// hooks/useScrollDetection.ts
 'use client';
 
-import type { ScrollEventHandler } from '@/types/navigation.types';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
+// --- Start: Added type directly here ---
+type ScrollEventHandler = () => void; // A scroll event handler typically doesn't need the event object if only window.scrollY is used
+// --- End: Added type directly here ---
 
 interface UseScrollDetectionOptions {
   readonly threshold?: number;
@@ -38,7 +42,7 @@ export function useScrollDetection(
       setScrollY(currentScrollY);
       setIsScrolled(currentScrollY > threshold);
     }, debounceMs);
-  }, [threshold, debounceMs]);
+  }, [threshold, debounceMs]); // Depend on threshold and debounceMs
 
   useEffect(() => {
     // Use passive listener for better performance
@@ -46,7 +50,7 @@ export function useScrollDetection(
 
     window.addEventListener('scroll', handleScroll, options);
 
-    // Initial check
+    // Initial check when component mounts
     handleScroll();
 
     return () => {
@@ -55,7 +59,7 @@ export function useScrollDetection(
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [handleScroll]);
+  }, [handleScroll]); // Depend on handleScroll
 
   return { isScrolled, scrollY };
 }

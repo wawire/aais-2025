@@ -1,7 +1,11 @@
+// hooks/useKeyboardNavigation.ts
 'use client';
 
-import type { KeyboardEventHandler } from '@/types/navigation.types';
 import { useCallback, useEffect } from 'react';
+
+// --- Start: Added type directly here ---
+type KeyboardEventHandler = (event: KeyboardEvent) => void;
+// --- End: Added type directly here ---
 
 interface UseKeyboardNavigationOptions {
   readonly enabled?: boolean;
@@ -29,7 +33,7 @@ export function useKeyboardNavigation(
         break;
 
       case 'Enter':
-      case ' ':
+      case ' ': // Handle spacebar for activation as well
         event.preventDefault();
         onEnter?.();
         break;

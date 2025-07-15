@@ -1,4 +1,5 @@
 import VenueHero from "@/components/sections/VenueHero";
+import VenueTravelInfo from "@/components/sections/VenueTravelInfo";
 
 /**
  * Registration page for AAIS 2025.
@@ -6,10 +7,10 @@ import VenueHero from "@/components/sections/VenueHero";
  */
 export default function RegisterPage(): JSX.Element {
   return (
-    <div className="space-y-4">
+    <div className="">
       <VenueHero/>
-      <h1 className="text-3xl font-bold text-aviationGold">Register</h1>
-      <p className="demibold">Registration form placeholder.</p>
+    
+    <VenueTravelInfo/>
     </div>
   );
 }

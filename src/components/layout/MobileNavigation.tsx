@@ -1,9 +1,29 @@
+// components/MobileNavigation/MobileNavigation.tsx
 'use client';
 
-import type { LogoConfig, NavigationItem } from '@/types/navigation.types';
-import Image from 'next/image';
+import { useKeyboardNavigation } from '@/hooks/useKeyboardNavigation'; // Assuming this hook exists and is correctly typed
 import Link from 'next/link';
+import Image from 'next/image'; // Import Image from next/image
 import { memo, useEffect, useRef } from 'react';
+
+// --- Start: Added types directly here ---
+interface NavigationItem {
+  id: string;
+  label: string;
+  href: string;
+  external?: boolean;
+  ariaLabel?: string;
+}
+
+interface LogoConfig {
+  primary: {
+    src: string;
+    alt: string;
+  };
+  width: number;
+  height: number;
+}
+// --- End: Added types directly here ---
 
 interface MobileNavigationProps {
   readonly logoConfig: LogoConfig;
@@ -146,7 +166,7 @@ const MobileNavigation = memo<MobileNavigationProps>(({
                     transition-all duration-200
                     active:scale-98 transform
                   "
-                  aria-label={item.ariaLabel || `Navigate to ${item.label}`}
+                  aria-label={item.ariaLabel || `Maps to ${item.label}`}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
                 >

@@ -1,9 +1,24 @@
+// components/LogoTransition/LogoTransition.tsx
 'use client';
 
-import type { LogoConfig } from '@/types/navigation.types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
+
+// --- Start: Added type directly here ---
+interface LogoConfig {
+  primary: {
+    src: string;
+    alt: string;
+  };
+  secondary: {
+    src: string;
+    alt: string;
+  };
+  width: number;
+  height: number;
+}
+// --- End: Added type directly here ---
 
 interface LogoTransitionProps {
   readonly isScrolled: boolean;

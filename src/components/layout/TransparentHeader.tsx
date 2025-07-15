@@ -1,15 +1,44 @@
+// components/Header/TransparentHeader.tsx
 'use client';
 
 import { useScrollDetection } from '@/hooks/useScrollDetection';
-import type {
-  LogoConfig,
-  NavigationItem,
-  TransparentHeaderProps
-} from '@/types/navigation.types';
 import Link from 'next/link';
 import { memo, useEffect, useMemo, useState } from 'react';
 import { LogoTransition } from './LogoTransition';
 import { MobileNavigation } from './MobileNavigation';
+
+// --- Start: Added types directly here ---
+interface NavigationItem {
+  id: string;
+  label: string;
+  href: string;
+  external?: boolean;
+  ariaLabel?: string;
+}
+
+interface LogoConfig {
+  primary: {
+    src: string;
+    alt: string;
+  };
+  secondary: {
+    src: string;
+    alt: string;
+  };
+  width: number;
+  height: number;
+}
+
+type NavigationEventHandler = (item: NavigationItem) => void; // Defined here as it's used in onNavigate
+
+interface TransparentHeaderProps {
+  readonly className?: string;
+  readonly logoConfig?: LogoConfig; // Made optional as it has a default
+  readonly navigationItems?: readonly NavigationItem[]; // Made optional as it has a default
+  readonly onNavigate?: NavigationEventHandler;
+}
+// --- End: Added types directly here ---
+
 
 // Default configuration constants
 const DEFAULT_LOGO_CONFIG: LogoConfig = {
@@ -26,7 +55,7 @@ const DEFAULT_LOGO_CONFIG: LogoConfig = {
 } as const;
 
 const DEFAULT_NAVIGATION_ITEMS: readonly NavigationItem[] = [
-   {
+  {
     id: 'About',
     label: 'About the Summit',
     href: '/about',
@@ -88,15 +117,16 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '0px';
+      // Consider adding a small padding-right to body to avoid content jump if scrollbar disappears
+      // document.body.style.paddingRight = '0px'; // Adjust if scrollbar width is an issue
     } else {
       document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+      // document.body.style.paddingRight = '';
     }
 
     return () => {
       document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+      // document.body.style.paddingRight = '';
     };
   }, [isMobileMenuOpen]);
 
@@ -195,7 +225,7 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
                             active:scale-95 transform cursor-pointer
                           `}
                           style={{ listStyle: 'none' }}
-                          aria-label={item.ariaLabel || `Navigate to ${item.label}`}
+                          aria-label={item.ariaLabel || `Maps to ${item.label}`}
                           target={item.external ? '_blank' : undefined}
                           rel={item.external ? 'noopener noreferrer' : undefined}
                         >
@@ -228,7 +258,7 @@ const TransparentHeader = memo<TransparentHeaderProps>(({
                   >
                     Register Now
                   </Link>
-                )}\
+                )}
               </div>
             </div>
 

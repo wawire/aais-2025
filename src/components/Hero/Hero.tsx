@@ -1,10 +1,33 @@
 // components/Hero/Hero.tsx
 'use client';
 
-import type { HeroAction, HeroProps } from '@/types/hero.types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+
+// --- Start: Added types directly here ---
+interface HeroAction {
+  id: string;
+  label: string;
+  href: string;
+  variant: 'primary' | 'secondary' | 'outline';
+  ariaLabel?: string;
+  external?: boolean; // Added optional 'external' property for external links
+}
+
+interface HeroProps {
+  className?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  actions?: readonly HeroAction[];
+  backgroundImage?: string;
+  backgroundVideo?: string;
+  eventDate?: string;
+  eventLocation?: string;
+}
+// --- End: Added types directly here ---
+
 
 // Updated actions
 const DEFAULT_ACTIONS: readonly HeroAction[] = [
@@ -108,6 +131,7 @@ const Hero = memo<HeroProps>(({
       outline: "border-2 border-white text-white hover:bg-white hover:text-charcoal-600 shadow-lg hover:shadow-white/20 focus:ring-white backdrop-blur-sm"
     };
 
+    // Determine if it's an external link or internal Next.js Link
     const ButtonComponent = action.external ? 'a' : Link;
     const linkProps = action.external
       ? { href: action.href, target: '_blank', rel: 'noopener noreferrer' }
@@ -179,6 +203,7 @@ const Hero = memo<HeroProps>(({
           style={{ pointerEvents: 'none' }}
         >
           <source src={backgroundVideo} type="video/mp4" />
+          {/* Fallback Image for Video (if video fails to load) */}
           <Image
             src={backgroundImage}
             alt="Africa Aviation Innovation Summit 2025"
@@ -356,4 +381,4 @@ const Hero = memo<HeroProps>(({
 Hero.displayName = 'Hero';
 
 export { Hero };
-export type { HeroProps };
+export type { HeroProps }; // Export HeroProps for use in other components if needed

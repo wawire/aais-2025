@@ -1,10 +1,54 @@
 // components/Footer/Footer.tsx
 'use client';
 
-import type { ContactInfo, FooterProps, FooterSection, SocialLink } from '@/types/footer.types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
+
+// --- Start: Added types directly here ---
+interface FooterLink {
+  id: string;
+  label: string;
+  href: string;
+  external?: boolean; // Optional property for external links
+  ariaLabel?: string; // Optional accessibility label
+}
+
+interface FooterSection {
+  id: string;
+  title: string;
+  links: FooterLink[];
+}
+
+interface SocialLink {
+  id: string;
+  platform: string;
+  href: string;
+  icon: 'linkedin' | 'twitter' | 'youtube' | 'instagram'; // Union type for specific icons
+  ariaLabel?: string;
+}
+
+interface ContactAddress {
+  street: string;
+  city: string;
+  country: string;
+}
+
+interface ContactInfo {
+  email: string;
+  phone: string;
+  address: ContactAddress;
+}
+
+interface FooterProps {
+  className?: string;
+  sections?: readonly FooterSection[];
+  socialLinks?: readonly SocialLink[];
+  contactInfo?: ContactInfo;
+  copyrightYear?: number;
+}
+// --- End: Added types directly here ---
+
 
 // Default footer configuration
 const DEFAULT_FOOTER_SECTIONS: readonly FooterSection[] = [
@@ -24,9 +68,9 @@ const DEFAULT_FOOTER_SECTIONS: readonly FooterSection[] = [
     title: 'Participation',
     links: [
       { id: 'register', label: 'Register Now', href: '/register' },
-      { id: 'pricing', label: 'Pricing', href: '/pricing' },
-      { id: 'group-discounts', label: 'Group Discounts', href: '/group-discounts' },
-      { id: 'student-rates', label: 'Student Rates', href: '/student-rates' },
+      { id: 'pricing', label: 'Pricing', href: '/register' },
+      { id: 'group-discounts', label: 'Group Discounts', href: '/register' },
+      { id: 'student-rates', label: 'Student Rates', href: '/register' },
       { id: 'cancellation', label: 'Cancellation Policy', href: '/cancellation' },
     ],
   },
@@ -36,9 +80,9 @@ const DEFAULT_FOOTER_SECTIONS: readonly FooterSection[] = [
     links: [
       { id: 'downloads', label: 'Downloads', href: '/downloads' },
       { id: 'past-events', label: 'Past Events', href: '/past-events' },
-      { id: 'news', label: 'News & Updates', href: '/news' },
-      { id: 'blog', label: 'Industry Blog', href: '/blog' },
-      { id: 'white-papers', label: 'White Papers', href: '/white-papers' },
+      // { id: 'news', label: 'News & Updates', href: '/news' },
+      // { id: 'blog', label: 'Industry Blog', href: '/blog' },
+      // { id: 'white-papers', label: 'White Papers', href: '/white-papers' },
     ],
   },
   {
@@ -47,8 +91,8 @@ const DEFAULT_FOOTER_SECTIONS: readonly FooterSection[] = [
     links: [
       { id: 'contact', label: 'Contact Us', href: '/contact' },
       { id: 'faq', label: 'FAQ', href: '/faq' },
-      { id: 'help', label: 'Help Center', href: '/help' },
-      { id: 'accessibility', label: 'Accessibility', href: '/accessibility' },
+      { id: 'help', label: 'Help Center', href: '/faq' },
+      // { id: 'accessibility', label: 'Accessibility', href: '/accessibility' },
       { id: 'feedback', label: 'Feedback', href: '/feedback' },
     ],
   },
@@ -72,7 +116,7 @@ const DEFAULT_SOCIAL_LINKS: readonly SocialLink[] = [
   {
     id: 'youtube',
     platform: 'YouTube',
-    href: 'https://youtube.com/@aais2025',
+    href: 'https://youtube.com/@aais2025', // This URL seems like a placeholder, consider updating it.
     icon: 'youtube',
     ariaLabel: 'Subscribe to AAIS 2025 on YouTube',
   },
@@ -106,7 +150,7 @@ const Footer = memo<FooterProps>(({
   contactInfo = DEFAULT_CONTACT_INFO,
   copyrightYear = new Date().getFullYear(),
 }) => {
-  const renderSocialIcon = (iconName: string) => {
+  const renderSocialIcon = (iconName: SocialLink['icon']) => { // Use the type from SocialLink
     const iconClasses = "w-5 h-5 fill-current";
 
     switch (iconName) {
@@ -131,10 +175,11 @@ const Footer = memo<FooterProps>(({
       case 'instagram':
         return (
           <svg className={iconClasses} viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
         );
       default:
+        // Provide a default or handle unknown icons, or throw an error if icon is mandatory
         return null;
     }
   };
@@ -238,7 +283,7 @@ const Footer = memo<FooterProps>(({
                 {section.title}
               </h3>
               <nav className="space-y-3">
-                {section.links.map((link) => (
+                {section.links.map((link) => ( // Removed explicit type annotation here as it's now inferred
                   <div key={link.id}>
                     <Link
                       href={link.href}
@@ -316,7 +361,7 @@ const Footer = memo<FooterProps>(({
                   >
                     {legalLink.label}
                   </Link>
-                  {index < 3 && (
+                  {index < 3 && ( // Only add separator if not the last item
                     <span className="text-charcoal-700 mx-3">|</span>
                   )}
                 </div>
@@ -332,4 +377,4 @@ const Footer = memo<FooterProps>(({
 Footer.displayName = 'Footer';
 
 export { Footer };
-export type { FooterProps };
+export type { FooterProps }; // Still export FooterProps if other components might use it
