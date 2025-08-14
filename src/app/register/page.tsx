@@ -1,12 +1,11 @@
-
-
-import RegisterComingSoon from '@/components/sections/RegisterComingSoon';
 import RegisterHero from '@/components/sections/RegisterHero';
 import { Metadata } from 'next';
+import { Registration } from '../../components/sections/Registration';
 
 export const metadata: Metadata = {
   title: 'Register - AAIS 2025 | Africa Aviation Innovation Summit',
-  description: 'Register for the Africa Aviation Innovation Summit 2025 in Diani, Kenya. Choose from Early Bird, Standard, Student, Corporate, Exhibitor, and Sponsorship packages.',
+  description:
+    'Register for the Africa Aviation Innovation Summit 2025 in Diani, Kenya. Choose from Early Bird, Standard, Student, Corporate, Exhibitor, and Sponsorship packages.',
   keywords: 'AAIS 2025, aviation summit, Kenya Airways, registration, aviation conference, Diani',
   openGraph: {
     title: 'Register for AAIS 2025',
@@ -22,11 +21,8 @@ export const metadata: Metadata = {
 export default function RegisterPage(): JSX.Element {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-aviationGold/5">
-<RegisterHero />
-
-      <RegisterComingSoon />
-
-
+      <RegisterHero />
+      <Registration />
     </div>
   );
 }

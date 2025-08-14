@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useCallback, useMemo, useState } from 'react';
 
 /**
- * Panelist interface for AAIS 2025 panel discussions
- * Structured for clean architecture and type safety
+ * Panelist interface defining the structure for AAIS 2025 panelists
+ * Follows clean architecture principles with clear data contracts
  */
 interface Panelist {
   /** Unique identifier for the panelist */
@@ -14,88 +14,37 @@ interface Panelist {
   name: string;
   /** Professional title and organization */
   title: string;
-  /** Detailed biography highlighting expertise */
+  /** Detailed biography highlighting aviation expertise */
   bio: string;
   /** Photo URL - Must be provided by developer */
   photo: string;
-  /** Panel sessions the panelist participates in */
-  panels: string[];
 }
 
 /**
- * Sample panelists for AAIS 2025 panel discussions
+ * Sample panelists for AAIS 2025: "Investing in Africa's Aviation Future"
  * Real photo URLs must be provided by developer at /panelists/ directory
  */
 const panelists: Panelist[] = [
   {
     id: 1,
-    name: 'Patricia Asante',
-    title: 'Director of Infrastructure Finance, African Development Bank',
-    bio: 'Patricia Asante leads aviation infrastructure financing across Africa, managing a $1.2 billion portfolio of airport and connectivity projects. Her expertise in public-private partnerships has revolutionized funding models for sustainable route development. She champions innovative financing solutions that balance commercial viability with social impact, particularly in underserved regions.',
-    photo: '/panelists/patricia-asante.jpg', // Developer: Replace with actual photo
-    panels: ['Investing in Aviation Infrastructure', 'Building Aviation Hubs'],
+    name: 'FREDRICK KITUNGA',
+    title: 'Chief Information and Data Officer, Kenya Airways',
+    bio: 'Fredrick Kitunga serves as the Chief Information and Data Officer at Kenya Airways, overseeing people, processes, and technologies within the Kenya Airways Technology organization. With over 27 years of experience in technology across energy, banking, telecommunications, and aviation sectors, he leads digital transformation strategies that drive business operational efficiency and effectiveness. An Electrical Engineer with professional certifications including CRISK, CISA, and ITIL, Fredrick has been instrumental in implementing AI, ML, and data analytics solutions that enhance customer experience and operational excellence at Kenya Airways.',
+    photo: '/images/panelists/fredrick-kitunga.png',
   },
   {
     id: 2,
-    name: 'Dr. Kwame Osei',
-    title: 'Chief Technology Officer, Ghana Aviation Authority',
-    bio: 'Dr. Kwame Osei spearheads digital transformation initiatives across West African aviation. His pioneering work in AI-powered air traffic management and biometric passenger processing has improved efficiency by 40%. As a leading advocate for blockchain in aviation security, he develops cutting-edge solutions that enhance operational safety and transparency.',
-    photo: '/panelists/kwame-osei.jpg', // Developer: Replace with actual photo
-    panels: ['Sky-Tech Africa: Digital Transformation', 'Building Aviation Hubs'],
-  },
-  {
-    id: 3,
-    name: 'Caroline Muthoni',
-    title: 'Human Resources Director, East African Aviation Academy',
-    bio: 'Caroline Muthoni transforms aviation workforce development through innovative training programs and gender inclusion initiatives. Her leadership has increased female participation in technical aviation roles by 60% across East Africa. She designs comprehensive career pathways that address skill gaps while promoting diversity and sustainable employment in the aviation sector.',
-    photo: '/panelists/caroline-muthoni.jpg', // Developer: Replace with actual photo
-    panels: ['Human Capital', 'Cross-Sector Collaboration'],
-  },
-  {
-    id: 4,
-    name: 'Ahmed Farouk',
-    title: 'Managing Partner, North African Aviation Logistics',
-    bio: 'Ahmed Farouk orchestrates complex cargo operations connecting Africa with global markets. His expertise in cold chain logistics and pharmaceutical transport has made North Africa a critical hub for vaccine distribution. He champions sustainable logistics solutions and cross-border collaboration that strengthen regional trade relationships and economic integration.',
-    photo: '/panelists/ahmed-farouk.jpg', // Developer: Replace with actual photo
-    panels: ['Industries Powering Aviation', 'Building Aviation Hubs'],
-  },
-  {
-    id: 5,
-    name: 'Dr. Nalaka Perera',
-    title: 'Senior Aviation Economist, International Air Transport Association',
-    bio: 'Dr. Nalaka Perera provides economic analysis and policy guidance for African aviation markets. His research on tourism-aviation synergies has influenced government policies across 20 African countries. With expertise in market liberalization and route development, he identifies opportunities that maximize economic impact while ensuring sustainable industry growth.',
-    photo: '/panelists/nalaka-perera.jpg', // Developer: Replace with actual photo
-    panels: ['Cross-Sector Collaboration', 'Industries Powering Aviation'],
-  },
-  {
-    id: 6,
-    name: 'Fatou Diagne',
-    title: 'Chief Operating Officer, West African Airways Union',
-    bio: 'Fatou Diagne drives operational excellence and safety standards across West African airlines. Her leadership in maintenance harmonization and pilot training accreditation has enhanced regional aviation safety by 45%. She advocates for collaborative approaches to challenges, fostering partnerships that strengthen the entire West African aviation ecosystem.',
-    photo: '/panelists/fatou-diagne.jpg', // Developer: Replace with actual photo
-    panels: ['Cross-Sector Collaboration', 'Human Capital'],
-  },
-  {
-    id: 7,
-    name: 'Michael Banda',
-    title: 'Infrastructure Development Manager, Southern African Development Community',
-    bio: 'Michael Banda coordinates aviation infrastructure projects across 16 SADC member states. His expertise in airport modernization and regional connectivity has facilitated $800 million in infrastructure investments. He specializes in creating synergies between aviation development and broader economic growth, particularly in landlocked countries seeking improved connectivity.',
-    photo: '/panelists/michael-banda.jpg', // Developer: Replace with actual photo
-    panels: ['Investing in Aviation Infrastructure', 'Building Aviation Hubs'],
-  },
-  {
-    id: 8,
-    name: 'Rahma Said',
-    title: 'Director of Innovation, Ethiopian Airlines Group',
-    bio: 'Rahma Said leads digital innovation initiatives at Africa\'s largest airline group. Her work in passenger experience technology and operational automation has set new industry standards. She champions the integration of emerging technologies with traditional aviation operations, ensuring that innovation enhances rather than disrupts established safety and service protocols.',
-    photo: '/panelists/rahma-said.jpg', // Developer: Replace with actual photo
-    panels: ['Sky-Tech Africa: Digital Transformation', 'Industries Powering Aviation'],
+    name: 'KARANJA NDEGWA',
+    title: 'Chief Executive Officer and Managing Director, Jambojet',
+    bio: "Karanja Ndegwa leads Jambojet, Kenya Airways' low-cost subsidiary, as Chief Executive Officer and Managing Director. A Certified Public Accountant and graduate of Economics and Statistics from the University of Nairobi, he brings over 20 years of aviation industry experience, with 12 years in leadership positions. Prior to joining Jambojet in 2014, he worked at Kenya Airways in various capacities, rising to Revenue Accounting Manager. Under his leadership, Jambojet has grown significantly, carrying over 1.4 million passengers and expanding its route network across East Africa, making air travel more accessible and affordable.",
+    photo: '/images/panelists/karanja-ndegwa.jpg',
   },
 ];
 
 /**
  * PanelistCard Component
- * Interactive card displaying panelist information with hover animations
+ * Displays individual panelist with hover animations and interaction
+ * Optimized for performance with memoization and minimal re-renders
  */
 interface PanelistCardProps {
   panelist: Panelist;
@@ -106,10 +55,12 @@ const PanelistCard = ({ panelist, onClick }: PanelistCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
 
+  // Memoized hover handlers for performance optimization
   const handleMouseEnter = useCallback(() => setIsHovered(true), []);
   const handleMouseLeave = useCallback(() => setIsHovered(false), []);
   const handleImageError = useCallback(() => setImageError(true), []);
 
+  // Fallback image for error handling
   const imageSrc = imageError ? '/images/placeholder-panelist.jpg' : panelist.photo;
 
   return (
@@ -121,14 +72,14 @@ const PanelistCard = ({ panelist, onClick }: PanelistCardProps) => {
       role="button"
       tabIndex={0}
       aria-label={`View ${panelist.name}'s profile`}
-      onKeyDown={(e) => {
+      onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           onClick();
         }
       }}
     >
-      {/* Panelist Photo */}
+      {/* Panelist Photo with Hover Animation */}
       <div
         className={`absolute top-0 left-1/2 transform -translate-x-1/2
           w-[220px] h-[220px] overflow-hidden border-4 border-white shadow-lg
@@ -148,15 +99,15 @@ const PanelistCard = ({ panelist, onClick }: PanelistCardProps) => {
           className="w-full h-full object-cover"
           onError={handleImageError}
           loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+Waj2vTSlT54b6bk+h0R+Waj2vTS"
         />
       </div>
 
-      {/* Panelist Info Card */}
+      {/* Panelist Info Card - Slides up on hover */}
       <div
         className={`absolute bottom-0 w-full bg-white rounded-xl shadow-lg transform transition-all duration-300 ease-in-out z-10
-          ${
-            isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }
+          ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
         `}
       >
         <div className="pt-28 pb-6 flex flex-col items-center">
@@ -166,16 +117,14 @@ const PanelistCard = ({ panelist, onClick }: PanelistCardProps) => {
           <p className="text-sm text-gray-600 mt-1 text-center px-4 leading-relaxed">
             {panelist.title}
           </p>
-          <div className="mt-2 text-xs text-[#1A252F] text-center px-4">
-            {panelist.panels.length} Panel{panelist.panels.length > 1 ? 's' : ''}
-          </div>
           <button
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               onClick();
             }}
             className="mt-4 px-6 py-2 bg-[#C2A542] text-white text-sm rounded-full
                      hover:bg-[#A68F3A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C2A542] focus:ring-opacity-50"
+            aria-label={`View ${panelist.name}'s detailed profile`}
           >
             View Profile
           </button>
@@ -187,7 +136,8 @@ const PanelistCard = ({ panelist, onClick }: PanelistCardProps) => {
 
 /**
  * PanelistModal Component
- * Detailed view of panelist information
+ * Full-screen modal displaying detailed panelist information
+ * Implements accessibility best practices and keyboard navigation
  */
 interface PanelistModalProps {
   panelist: Panelist | null;
@@ -197,11 +147,15 @@ interface PanelistModalProps {
 const PanelistModal = ({ panelist, onClose }: PanelistModalProps) => {
   const [imageError, setImageError] = useState(false);
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  }, [onClose]);
+  // Handle escape key for accessibility
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   const handleImageError = useCallback(() => setImageError(true), []);
 
@@ -217,15 +171,17 @@ const PanelistModal = ({ panelist, onClose }: PanelistModalProps) => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="panelist-modal-title"
+      aria-describedby="panelist-modal-description"
     >
       <div
         className="bg-white rounded-2xl max-w-6xl w-full overflow-hidden shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
-        <div className="flex flex-row items-stretch">
-          {/* Left Side - Photo */}
-          <div className="w-1/3 relative bg-gray-100">
-            <div className="h-full min-h-[500px]">
+        {/* Flex Layout: Photo (1/3) + Content (2/3) */}
+        <div className="flex flex-col md:flex-row items-stretch">
+          {/* Left Side - Panelist Photo */}
+          <div className="w-full md:w-1/3 relative bg-gray-100">
+            <div className="h-64 md:h-full md:min-h-[500px]">
               <Image
                 src={imageSrc}
                 alt={`${panelist.name} - ${panelist.title}`}
@@ -238,36 +194,14 @@ const PanelistModal = ({ panelist, onClose }: PanelistModalProps) => {
             </div>
           </div>
 
-          {/* Right Side - Information */}
-          <div className="w-2/3 p-8 flex flex-col">
+          {/* Right Side - Panelist Information */}
+          <div className="w-full md:w-2/3 p-8 flex flex-col">
             <div className="flex justify-between items-start mb-4">
               <div className="flex-1">
-                <h2
-                  id="panelist-modal-title"
-                  className="text-2xl font-bold text-[#C2A542] mb-2"
-                >
+                <h2 id="panelist-modal-title" className="text-2xl font-bold text-[#C2A542] mb-2">
                   {panelist.name.toUpperCase()}
                 </h2>
-                <p className="text-base font-medium text-gray-600 mb-4">
-                  {panelist.title}
-                </p>
-
-                {/* Panel Participation */}
-                <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-[#1A252F] mb-2">
-                    Panel Participation:
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {panelist.panels.map((panel, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-[#C2A542]/10 text-[#1A252F] text-xs rounded-full border border-[#C2A542]/20"
-                      >
-                        {panel}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-base font-medium text-gray-600 mb-4">{panelist.title}</p>
               </div>
 
               {/* Close Button */}
@@ -287,17 +221,21 @@ const PanelistModal = ({ panelist, onClose }: PanelistModalProps) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>
 
-            <div className="border-t border-gray-200 mb-6"></div>
+            {/* Divider */}
+            <div className="border-t border-gray-200 mb-6" />
 
-            {/* Biography */}
+            {/* Biography Section */}
             <div className="flex-grow">
-              <p className="text-gray-700 text-base leading-relaxed">
+              <p
+                id="panelist-modal-description"
+                className="text-gray-700 text-base leading-relaxed"
+              >
                 {panelist.bio}
               </p>
             </div>
@@ -310,11 +248,13 @@ const PanelistModal = ({ panelist, onClose }: PanelistModalProps) => {
 
 /**
  * Main PanelistGrid Component
- * Displays panel discussion experts for AAIS 2025
+ * Renders the complete panelists section with grid layout and modal functionality
+ * Optimized for performance and accessibility
  */
 const PanelistGrid = () => {
   const [selectedPanelist, setSelectedPanelist] = useState<Panelist | null>(null);
 
+  // Memoized handlers for performance
   const handlePanelistSelect = useCallback((panelist: Panelist) => {
     setSelectedPanelist(panelist);
   }, []);
@@ -323,24 +263,22 @@ const PanelistGrid = () => {
     setSelectedPanelist(null);
   }, []);
 
+  // Memoized panelists list to prevent unnecessary re-renders
   const memoizedPanelists = useMemo(() => panelists, []);
 
   return (
-    <section className="py-12 bg-white" aria-labelledby="panelists-heading">
-      {/* Header Section */}
-      <div className="padding-container max-container mb-20">
-        <h2
-          id="panelists-heading"
-          className="text-3xl font-bold text-[#C2A542] mb-4"
-        >
+    <section className="py-12 bg-gray-50" aria-labelledby="panelists-heading">
+      {/* Header Section - Centered */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
+        <h2 id="panelists-heading" className="text-3xl font-bold text-[#C2A542] mb-4">
           Our Panelists
         </h2>
 
-        {/* Decorative Line with Icon */}
+        {/* Decorative Line with Centered Aviation Icon */}
         <div className="relative flex items-center justify-center mb-6">
           <hr className="w-full border-gray-300" />
-          <span className="absolute right-0 bg-white px-2 text-[#C2A542]">
-            {/* Panel discussion icon - Developer: Replace with preferred icon */}
+          <span className="absolute left-1/2 transform -translate-x-1/2 bg-gray-50 px-4 text-[#C2A542]">
+            {/* Panel Discussion themed SVG Icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -353,25 +291,25 @@ const PanelistGrid = () => {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
               />
             </svg>
           </span>
         </div>
 
-        <p className="text-base text-gray-600 max-w-5xl leading-relaxed">
-          Discover the expert panelists facilitating dynamic discussions at AAIS 2025. These industry
-          leaders will guide conversations on critical topics including aviation infrastructure investment,
-          digital transformation, human capital development, and cross-sector collaboration that are
-          shaping Africa's aviation future.
+        <p className="text-base text-gray-600 max-w-5xl mx-auto leading-relaxed">
+          Join our distinguished panelists as they engage in dynamic discussions on the future of
+          African aviation. These industry experts will explore cutting-edge technological
+          innovations, digital transformation strategies, and sustainable growth opportunities that
+          are reshaping the aviation landscape across Africa.
         </p>
       </div>
 
-      {/* Panelists Grid */}
+      {/* Panelists Grid - Centered Layout */}
       <div className="flex items-center justify-center">
-        <div className="padding-container max-container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
-            {memoizedPanelists.map((panelist) => (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-8">
+            {memoizedPanelists.map(panelist => (
               <PanelistCard
                 key={panelist.id}
                 panelist={panelist}
@@ -383,12 +321,7 @@ const PanelistGrid = () => {
       </div>
 
       {/* Panelist Modal */}
-      {selectedPanelist && (
-        <PanelistModal
-          panelist={selectedPanelist}
-          onClose={handleModalClose}
-        />
-      )}
+      {selectedPanelist && <PanelistModal panelist={selectedPanelist} onClose={handleModalClose} />}
     </section>
   );
 };

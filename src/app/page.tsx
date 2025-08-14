@@ -18,14 +18,11 @@ export const metadata: Metadata = {
 export default function HomePage(): JSX.Element {
   return (
     <>
-
       <Hero />
       <EventHighlights />
       <WhyAttend />
       <Registration />
-      <SponsorsPartners/>
-
-
+      <SponsorsPartners />
     </>
   );
 }

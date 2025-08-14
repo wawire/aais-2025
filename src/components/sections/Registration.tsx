@@ -1,5 +1,5 @@
 // components/sections/Registration.tsx
-'use client'
+'use client';
 import {
   BanknotesIcon,
   BuildingStorefrontIcon,
@@ -8,7 +8,7 @@ import {
   CreditCardIcon,
   DevicePhoneMobileIcon,
   StarIcon,
-  UserIcon
+  UserIcon,
 } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
@@ -32,218 +32,221 @@ interface PaymentMethod {
 type TabType = 'delegate' | 'exhibitor' | 'sponsor';
 
 /**
- * Enhanced Registration section with full-width containers and aligned buttons
- * Maximizes space usage and ensures consistent card heights
+ * Enhanced Registration section with actual registration links
  */
 export function Registration(): JSX.Element {
   const [activeTab, setActiveTab] = useState<TabType>('delegate');
 
   const tabs = [
     { id: 'delegate' as TabType, label: 'Delegate', icon: <UserIcon className="h-4 w-4" /> },
-    { id: 'exhibitor' as TabType, label: 'Exhibitor', icon: <BuildingStorefrontIcon className="h-4 w-4" /> },
-    { id: 'sponsor' as TabType, label: 'Sponsor', icon: <StarIcon className="h-4 w-4" /> }
+    {
+      id: 'exhibitor' as TabType,
+      label: 'Exhibitor',
+      icon: <BuildingStorefrontIcon className="h-4 w-4" />,
+    },
+    { id: 'sponsor' as TabType, label: 'Sponsor', icon: <StarIcon className="h-4 w-4" /> },
   ];
 
   const delegatePackages: Package[] = [
     {
-      name: "Early Bird",
-      price: "$300",
-      originalPrice: "$350",
-      description: "Limited time offer - Save $50",
+      name: 'Early Bird',
+      price: '$300',
+      originalPrice: '$350',
+      description: 'Limited time offer - Save $50',
       features: [
-        "All keynote sessions",
-        "Panel discussions",
-        "Networking events",
-        "Conference materials",
-        "Lunch & refreshments",
-        "Gala dinner access"
+        'All keynote sessions',
+        'Panel discussions',
+        'Networking events',
+        'Conference materials',
+        'Lunch & refreshments',
+        'Gala dinner access',
       ],
       highlighted: true,
-      deadline: "Deadline: September 1, 2025"
+      deadline: 'Deadline: September 1, 2025',
     },
     {
-      name: "Standard",
-      price: "$350",
-      description: "Full conference access",
+      name: 'Standard',
+      price: '$350',
+      description: 'Full conference access',
       features: [
-        "All keynote sessions",
-        "Panel discussions",
-        "Networking events",
-        "Conference materials",
-        "Lunch & refreshments",
-        "Gala dinner access"
-      ]
+        'All keynote sessions',
+        'Panel discussions',
+        'Networking events',
+        'Conference materials',
+        'Lunch & refreshments',
+        'Gala dinner access',
+      ],
     },
     {
-      name: "Corporate",
-      price: "$1500",
-      description: "For 5 people",
+      name: 'Corporate',
+      price: '$1500',
+      description: 'For 5 people',
       features: [
-        "All standard delegate benefits",
-        "VIP networking access",
-        "Dedicated account manager",
-        "Company branding opportunities",
-        "5 delegate passes",
-        "Priority seating"
-      ]
+        'All standard delegate benefits',
+        'VIP networking access',
+        'Dedicated account manager',
+        'Company branding opportunities',
+        '5 delegate passes',
+        'Priority seating',
+      ],
     },
     {
-      name: "Student",
-      price: "$150",
-      description: "Special rate for students",
+      name: 'Student',
+      price: '$150',
+      description: 'Special rate for students',
       features: [
-        "All keynote sessions",
-        "Panel discussions",
-        "Student networking sessions",
-        "Conference materials",
-        "Lunch & refreshments",
-        "Requires: Student ID & institution letter"
-      ]
-    }
+        'All keynote sessions',
+        'Panel discussions',
+        'Student networking sessions',
+        'Conference materials',
+        'Lunch & refreshments',
+        'Requires: Student ID & institution letter',
+      ],
+    },
   ];
 
   const exhibitorPackages: Package[] = [
     {
-      name: "Premium Booth",
-      price: "$3000",
-      description: "Maximum exhibition impact",
+      name: 'Premium Booth',
+      price: '$3000',
+      description: 'Maximum exhibition impact',
       features: [
-        "Exhibition booth 3m x 6m with company name",
-        "65-inch screen for display",
-        "2 executive chairs & 1 round table",
-        "1 lockable counter & 2 standard chairs",
-        "2 spotlights & 2 electrical sockets",
-        "1 dustbin & 4 event passes"
+        'Exhibition booth 3m x 6m with company name',
+        '65-inch screen for display',
+        '2 executive chairs & 1 round table',
+        '1 lockable counter & 2 standard chairs',
+        '2 spotlights & 2 electrical sockets',
+        '1 dustbin & 4 event passes',
       ],
-      availability: "3 slots available"
+      availability: '3 slots available',
     },
     {
-      name: "Modular Booth",
-      price: "$2000",
-      description: "Enhanced visibility package",
+      name: 'Modular Booth',
+      price: '$2000',
+      description: 'Enhanced visibility package',
       features: [
-        "Exhibition booth 3m x 4m with company name",
-        "55-inch screen for display",
-        "1 executive seat & 1 round table",
-        "1 lockable counter & 2 standard chairs",
-        "2 spotlights & 1 electrical socket",
-        "1 dustbin & 3 event passes"
+        'Exhibition booth 3m x 4m with company name',
+        '55-inch screen for display',
+        '1 executive seat & 1 round table',
+        '1 lockable counter & 2 standard chairs',
+        '2 spotlights & 1 electrical socket',
+        '1 dustbin & 3 event passes',
       ],
-      availability: "5 slots available",
-      highlighted: true
+      availability: '5 slots available',
+      highlighted: true,
     },
     {
-      name: "Basic Booth",
-      price: "$1000",
-      description: "Essential exhibition package",
+      name: 'Basic Booth',
+      price: '$1000',
+      description: 'Essential exhibition package',
       features: [
-        "Exhibition booth 3m x 3m with company name",
-        "43-inch screen for display",
-        "1 lockable counter & 2 standard chairs",
-        "2 spotlights & 1 electrical socket",
-        "1 dustbin & 2 event passes",
-        "Perfect for startups"
+        'Exhibition booth 3m x 3m with company name',
+        '43-inch screen for display',
+        '1 lockable counter & 2 standard chairs',
+        '2 spotlights & 1 electrical socket',
+        '1 dustbin & 2 event passes',
+        'Perfect for startups',
       ],
-      availability: "5 slots available"
-    }
+      availability: '5 slots available',
+    },
   ];
 
   const sponsorPackages: Package[] = [
     {
-      name: "Diamond",
-      price: "$60,000",
-      description: "Premier tier with maximum visibility and influence",
+      name: 'Diamond',
+      price: '$60,000',
+      description: 'Premier tier with maximum visibility and influence',
       features: [
         'Naming rights: "AAIS 2025 Powered by [Your Company]"',
-        "Top-tier logo placement on all event materials",
-        "Opening keynote speech opportunity",
-        "Largest, most prominent exhibition space",
-        "VIP Lounge access for exclusive networking",
-        "Special recognition in all media coverage",
-        "Invitation to Gala Dinner dinner",
-        "10 VIP passes"
+        'Top-tier logo placement on all event materials',
+        'Opening keynote speech opportunity',
+        'Largest, most prominent exhibition space',
+        'VIP Lounge access for exclusive networking',
+        'Special recognition in all media coverage',
+        'Invitation to Gala Dinner dinner',
+        '10 VIP passes',
       ],
-      availability: "2 slots available"
+      availability: '2 slots available',
     },
     {
-      name: "Platinum",
-      price: "$40,000",
-      description: "High-level visibility and engagement",
+      name: 'Platinum',
+      price: '$40,000',
+      description: 'High-level visibility and engagement',
       features: [
-        "Premium logo placement on all event materials",
-        "Keynote or fireside chat speaking opportunity",
-        "Prominent exhibition booth",
-        "VIP Lounge access for private networking",
-        " Media feature and press release mention",
-        "Invitation to Gala Dinner dinner",
-        "8 VIP passes"
+        'Premium logo placement on all event materials',
+        'Keynote or fireside chat speaking opportunity',
+        'Prominent exhibition booth',
+        'VIP Lounge access for private networking',
+        ' Media feature and press release mention',
+        'Invitation to Gala Dinner dinner',
+        '8 VIP passes',
       ],
-      availability: "3 slots available",
-      highlighted: true
+      availability: '3 slots available',
+      highlighted: true,
     },
     {
-      name: "Gold",
-      price: "$30,000",
-      description: "Enhanced visibility with speaking opportunities",
+      name: 'Gold',
+      price: '$30,000',
+      description: 'Enhanced visibility with speaking opportunities',
       features: [
-        "Logo on all marketing collateral & digital promotions",
-        "Panel discussion seat",
-        "Premium exhibition booth",
-        "Access to networking sessions & speaker lounge",
-        " Sponsor highlight across social media",
-        "Invitation to Gala Dinner dinner",
-        "6 VIP passes"
+        'Logo on all marketing collateral & digital promotions',
+        'Panel discussion seat',
+        'Premium exhibition booth',
+        'Access to networking sessions & speaker lounge',
+        ' Sponsor highlight across social media',
+        'Invitation to Gala Dinner dinner',
+        '6 VIP passes',
       ],
-      availability: "4 slots available"
+      availability: '4 slots available',
     },
     {
-      name: "Silver",
-      price: "$20,000",
-      description: "Essential visibility package for businesses",
+      name: 'Silver',
+      price: '$20,000',
+      description: 'Essential visibility package for businesses',
       features: [
-        "Logo on event website & select signage",
-        "Mention in event brochure",
-        "Basic exhibition space",
-        "General networking access",
-        "Social media mentions",
-         "Invitation to Gala Dinner dinner",
-        "4 VIP passes"
+        'Logo on event website & select signage',
+        'Mention in event brochure',
+        'Basic exhibition space',
+        'General networking access',
+        'Social media mentions',
+        'Invitation to Gala Dinner dinner',
+        '4 VIP passes',
       ],
-      availability: "Unlimited slots"
+      availability: 'Unlimited slots',
     },
     {
-      name: "Bronze",
-      price: "$10,000",
-      description: "Entry-level brand presence",
+      name: 'Bronze',
+      price: '$10,000',
+      description: 'Entry-level brand presence',
       features: [
-        "Logo on event website & select signage",
-        "Mention in event brochure",
-        "Basic exhibition space",
-        "General networking access",
-        "Invitation to Gala Dinner dinner",
-        "Social media mentions",
-        "2 VIP passes"
+        'Logo on event website & select signage',
+        'Mention in event brochure',
+        'Basic exhibition space',
+        'General networking access',
+        'Invitation to Gala Dinner dinner',
+        'Social media mentions',
+        '2 VIP passes',
       ],
-      availability: "Unlimited slots"
-    }
+      availability: 'Unlimited slots',
+    },
   ];
 
   const paymentMethods: PaymentMethod[] = [
     {
-      name: "M-Pesa",
+      name: 'M-Pesa',
       icon: <DevicePhoneMobileIcon className="h-4 w-4" />,
-      description: "Mobile Money"
+      description: 'Mobile Money',
     },
     {
-      name: "Bank Transfer",
+      name: 'Bank Transfer',
       icon: <BanknotesIcon className="h-4 w-4" />,
-      description: "KCB Bank"
+      description: 'KCB Bank',
     },
     {
-      name: "Credit Cards",
+      name: 'Credit Cards',
       icon: <CreditCardIcon className="h-4 w-4" />,
-      description: "Visa, Mastercard"
-    }
+      description: 'Visa, Mastercard',
+    },
   ];
 
   const getActivePackages = () => {
@@ -262,13 +265,43 @@ export function Registration(): JSX.Element {
   const getTabDescription = () => {
     switch (activeTab) {
       case 'delegate':
-        return "Join as an attendee and network with industry leaders";
+        return 'Join as an attendee and network with industry leaders';
       case 'exhibitor':
-        return "Showcase your products and services to aviation professionals";
+        return 'Showcase your products and services to aviation professionals';
       case 'sponsor':
-        return "Partner with us for maximum brand exposure and thought leadership";
+        return 'Partner with us for maximum brand exposure and thought leadership';
       default:
-        return "";
+        return '';
+    }
+  };
+
+  // Function to get the appropriate link based on tab and package
+  const getPackageLink = (packageName: string) => {
+    const packageType = packageName.toLowerCase().replace(' ', '');
+
+    switch (activeTab) {
+      case 'sponsor':
+        return `mailto:aais@kenya-airways.com?subject=Sponsorship Package Inquiry - ${packageName}`;
+
+      case 'exhibitor':
+        return 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=2ap03WnFOka8FwuiWo-jiDNPn9se78xGpaD6f1ba7_VUNDlBVlYyNVVCU0RTWUM4OTJITkdQTlk5Ty4u&route=shorturl';
+
+      case 'delegate':
+        switch (packageType) {
+          case 'earlybird':
+            return 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=2ap03WnFOka8FwuiWo-jiDNPn9se78xGpaD6f1ba7_VUQVRaWERZM0xRTzBWTTAzR0hYQUJSUTNHQS4u&route=shorturl';
+          case 'standard':
+            return 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=2ap03WnFOka8FwuiWo-jiDNPn9se78xGpaD6f1ba7_VUQVRaWERZM0xRTzBWTTAzR0hYQUJSUTNHQS4u&route=shorturl';
+          case 'corporate':
+            return 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=2ap03WnFOka8FwuiWo-jiEzmiTEMG4lIg9Ue800LLZ5UMlo0QldCV0wwREtaUEw0MTRXTTJCUTc3TS4u&route=shorturl';
+          case 'student':
+            return 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=2ap03WnFOka8FwuiWo-jiEzmiTEMG4lIg9Ue800LLZ5UOEwzWko4TFNDMElBV1BNMElUVDZRM0tOOC4u&route=shorturl';
+          default:
+            return '#';
+        }
+
+      default:
+        return '#';
     }
   };
 
@@ -323,23 +356,26 @@ export function Registration(): JSX.Element {
         ))}
       </div>
 
-      {/* Button pushed to bottom */}
-      <button
-        className={`w-full py-3 px-4 rounded-lg text-sm text-white font-medium transition-all duration-200 mt-auto ${
+      {/* Button replaced with link */}
+
+      <a
+        href={getPackageLink(pkg.name)}
+        target={activeTab === 'sponsor' ? '_self' : '_blank'}
+        rel={activeTab === 'sponsor' ? undefined : 'noopener noreferrer'}
+        className={`w-full py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200 mt-auto text-center block ${
           pkg.highlighted
             ? 'bg-aviationGold text-white hover:bg-aviationGold-600'
             : 'bg-gray-100 text-charcoal-800 hover:bg-aviationGold hover:text-white'
         }`}
       >
         Select Package
-      </button>
+      </a>
     </div>
   );
 
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-16">
-
         {/* Header - Centered */}
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold font-heading italic text-aviationGold mb-4">
@@ -353,7 +389,7 @@ export function Registration(): JSX.Element {
         {/* Enhanced Minimalistic Tabs - Centered */}
         <div className="flex justify-center mb-10">
           <div className="inline-flex bg-gray-100 rounded-lg p-1">
-            {tabs.map((tab) => (
+            {tabs.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
@@ -379,27 +415,29 @@ export function Registration(): JSX.Element {
           </div>
 
           {/* Full width grid with better spacing */}
-          <div className={`grid gap-6 ${
-            activeTab === 'sponsor'
-              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'
-              : activeTab === 'exhibitor'
-              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-              : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-          }`}>
+          <div
+            className={`grid gap-6 ${
+              activeTab === 'sponsor'
+                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'
+                : activeTab === 'exhibitor'
+                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+            }`}
+          >
             {getActivePackages().map(pkg => renderPackageCard(pkg))}
           </div>
 
           {activeTab === 'delegate' && (
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600 max-w-xl mx-auto">
-                <strong>Group Discount:</strong> 5+ people = $1500 total, additional attendees at standard rates
+                <strong>Group Discount:</strong> 5+ people = $1500 total, additional attendees at
+                standard rates
               </p>
             </div>
           )}
         </div>
 
         {/* Payment Methods - Wider container */}
-
       </div>
     </section>
   );

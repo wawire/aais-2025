@@ -30,7 +30,7 @@ const speakers: Speaker[] = [
     name: 'ALLAN KILAVUKA',
     title: 'Group MD & CEO, Kenya Airways; Chairperson of the Executive Committee, AFRAA',
     bio: 'Allan Kilavuka leads Kenya Airways as Group Managing Director and CEO, serving simultaneously as Chairperson of the Executive Committee at the African Airlines Association (AFRAA). With extensive aviation industry experience, he champions African aviation development, regional connectivity, and sustainable growth initiatives. His leadership drives innovation in airline operations, strategic partnerships, and the advancement of the Single African Air Transport Market (SAATM) across the continent.',
-    photo: '/images/speakers/allan.jpeg', 
+    photo: '/images/speakers/allan.jpeg',
   },
   {
     id: 2,
@@ -44,7 +44,7 @@ const speakers: Speaker[] = [
     name: 'HELLEN M. MWARIRI',
     title: 'Chief Strategy & Innovation Officer, Kenya Airways',
     bio: 'Hellen M. Mwariri leads strategic innovation and transformation initiatives at Kenya Airways as Chief Strategy & Innovation Officer. Her expertise spans digital transformation, operational excellence, and strategic business development within the aviation sector. She drives innovation in customer experience, operational efficiency, and sustainable aviation practices, positioning Kenya Airways for competitive advantage in the evolving African aviation landscape.',
-    photo: '/images/speakers/Hellen-Mwariri-Mathuka.jpg', 
+    photo: '/images/speakers/Hellen-Mwariri-Mathuka.jpg',
   },
 ];
 
@@ -79,7 +79,7 @@ const SpeakerCard = ({ speaker, onClick }: SpeakerCardProps) => {
       role="button"
       tabIndex={0}
       aria-label={`View ${speaker.name}'s profile`}
-      onKeyDown={(e) => {
+      onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           onClick();
@@ -114,9 +114,7 @@ const SpeakerCard = ({ speaker, onClick }: SpeakerCardProps) => {
       {/* Speaker Info Card - Slides up on hover */}
       <div
         className={`absolute bottom-0 w-full bg-white rounded-xl shadow-lg transform transition-all duration-300 ease-in-out z-10
-          ${
-            isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }
+          ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
         `}
       >
         <div className="pt-28 pb-6 flex flex-col items-center">
@@ -127,7 +125,7 @@ const SpeakerCard = ({ speaker, onClick }: SpeakerCardProps) => {
             {speaker.title}
           </p>
           <button
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               onClick();
             }}
@@ -157,11 +155,14 @@ const SpeakerModal = ({ speaker, onClose }: SpeakerModalProps) => {
   const [imageError, setImageError] = useState(false);
 
   // Handle escape key for accessibility
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  }, [onClose]);
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   const handleImageError = useCallback(() => setImageError(true), []);
 
@@ -181,7 +182,7 @@ const SpeakerModal = ({ speaker, onClose }: SpeakerModalProps) => {
     >
       <div
         className="bg-white rounded-2xl max-w-6xl w-full overflow-hidden shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         {/* Flex Layout: Photo (1/3) + Content (2/3) */}
         <div className="flex flex-col md:flex-row items-stretch">
@@ -204,15 +205,10 @@ const SpeakerModal = ({ speaker, onClose }: SpeakerModalProps) => {
           <div className="w-full md:w-2/3 p-8 flex flex-col">
             <div className="flex justify-between items-start mb-4">
               <div className="flex-1">
-                <h2
-                  id="speaker-modal-title"
-                  className="text-2xl font-bold text-[#C2A542] mb-2"
-                >
+                <h2 id="speaker-modal-title" className="text-2xl font-bold text-[#C2A542] mb-2">
                   {speaker.name.toUpperCase()}
                 </h2>
-                <p className="text-base font-medium text-gray-600 mb-4">
-                  {speaker.title}
-                </p>
+                <p className="text-base font-medium text-gray-600 mb-4">{speaker.title}</p>
               </div>
 
               {/* Close Button */}
@@ -232,21 +228,18 @@ const SpeakerModal = ({ speaker, onClose }: SpeakerModalProps) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-gray-200 mb-6"></div>
+            <div className="border-t border-gray-200 mb-6" />
 
             {/* Biography Section */}
             <div className="flex-grow">
-              <p
-                id="speaker-modal-description"
-                className="text-gray-700 text-base leading-relaxed"
-              >
+              <p id="speaker-modal-description" className="text-gray-700 text-base leading-relaxed">
                 {speaker.bio}
               </p>
             </div>
@@ -279,19 +272,16 @@ const SpeakerGrid = () => {
 
   return (
     <section className="py-12 bg-white" aria-labelledby="speakers-heading">
-      {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <h2
-          id="speakers-heading"
-          className="text-3xl font-bold text-[#C2A542] mb-4"
-        >
+      {/* Header Section - Centered */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
+        <h2 id="speakers-heading" className="text-3xl font-bold text-[#C2A542] mb-4">
           Our Speakers
         </h2>
 
-        {/* Decorative Line with Aviation Icon */}
+        {/* Decorative Line with Centered Aviation Icon */}
         <div className="relative flex items-center justify-center mb-6">
           <hr className="w-full border-gray-300" />
-          <span className="absolute right-0 bg-white px-2 text-[#C2A542]">
+          <span className="absolute left-1/2 transform -translate-x-1/2 bg-white px-4 text-[#C2A542]">
             {/* Aviation-themed SVG Icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -311,19 +301,19 @@ const SpeakerGrid = () => {
           </span>
         </div>
 
-        <p className="text-base text-gray-600 max-w-5xl leading-relaxed">
-          Meet our esteemed speakers driving the AAIS 2025 theme: "Investing in Africa's Aviation Future:
-          Unlocking Opportunities for Growth and Transformation through Innovation." These industry leaders
-          bring decades of expertise in aviation development, sustainability, and technological advancement
-          across the African continent.
+        <p className="text-base text-gray-600 max-w-5xl mx-auto leading-relaxed">
+          Meet our esteemed speakers driving the AAIS 2025 theme: "Investing in Africa's Aviation
+          Future: Unlocking Opportunities for Growth and Transformation through Innovation." These
+          industry leaders bring decades of expertise in aviation development, sustainability, and
+          technological advancement across the African continent.
         </p>
       </div>
 
-      {/* Speakers Grid */}
+      {/* Speakers Grid - Centered Layout */}
       <div className="flex items-center justify-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
-            {memoizedSpeakers.map((speaker) => (
+          <div className="flex flex-wrap justify-center gap-8">
+            {memoizedSpeakers.map(speaker => (
               <SpeakerCard
                 key={speaker.id}
                 speaker={speaker}
@@ -335,12 +325,7 @@ const SpeakerGrid = () => {
       </div>
 
       {/* Speaker Modal */}
-      {selectedSpeaker && (
-        <SpeakerModal
-          speaker={selectedSpeaker}
-          onClose={handleModalClose}
-        />
-      )}
+      {selectedSpeaker && <SpeakerModal speaker={selectedSpeaker} onClose={handleModalClose} />}
     </section>
   );
 };

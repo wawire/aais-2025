@@ -1,7 +1,7 @@
-import ModeratorGrid from "@/components/ModeratorGrid";
-import PanelistGrid from "@/components/PanelistGrid";
-import SpeakersHero from "@/components/sections/SpeakersHero";
-import SpeakerGrid from "@/components/SpeakerGrid";
+import ModeratorGrid from '@/components/ModeratorGrid';
+import PanelistGrid from '@/components/PanelistGrid';
+import SpeakersHero from '@/components/sections/SpeakersHero';
+import SpeakerGrid from '@/components/SpeakerGrid';
 
 /**
  * Speakers page for AAIS 2025.
@@ -10,10 +10,10 @@ import SpeakerGrid from "@/components/SpeakerGrid";
 export default function SpeakersPage(): JSX.Element {
   return (
     <div className="space-y-4">
-      <SpeakersHero/>
+      <SpeakersHero />
       <SpeakerGrid />
-      {/* <PanelistGrid /> */}
-      {/* <ModeratorGrid/> */}
+      <PanelistGrid />
+      <ModeratorGrid />
     </div>
   );
 }
