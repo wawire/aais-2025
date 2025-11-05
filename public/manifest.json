@@ -1,0 +1,42 @@
+{
+  "name": "Africa Aviation Innovation Summit 2025",
+  "short_name": "AAIS 2025",
+  "description": "Join 500+ aviation leaders at the 4th Africa Aviation Innovation Summit. November 6-7, 2025 at Diani Reef Beach Resort, Kenya.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#C2A542",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "events", "conferences"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/images/screenshot-desktop.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshot-mobile.jpg",
+      "sizes": "750x1334",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ]
+}
