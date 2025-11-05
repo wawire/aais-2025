@@ -1,6 +1,7 @@
 // components/Header/TransparentHeader.tsx
 'use client';
 
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useScrollDetection } from '@/hooks/useScrollDetection';
 import Link from 'next/link';
 import { memo, useEffect, useMemo, useState } from 'react';
@@ -280,7 +281,11 @@ const TransparentHeader = memo<TransparentHeaderProps>(
                       : 'text-white hover:text-aviationGold'
                   } focus:outline-none focus:ring-2 focus:ring-aviationGold focus:ring-offset-2 active:scale-95 transform`}
                 >
-                  {/* Hamburger icon */}
+                  {isMobileMenuOpen ? (
+                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                  )}
                 </button>
               </div>
             </div>
