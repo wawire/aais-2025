@@ -84,34 +84,35 @@ Visit [http://localhost:3000](http://localhost:3000)
 ## 🏗️ Project Structure
 
 ```
-aais-2025/
-├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx         # Root layout with metadata
-│   │   ├── page.tsx           # Homepage
-│   │   ├── error.tsx          # Error handling
-│   │   ├── loading.tsx        # Loading states
-│   │   ├── sitemap.ts         # Dynamic sitemap
-│   │   └── [pages]/           # Other pages
-│   ├── components/
-│   │   ├── layout/            # Header, Footer, Navigation
-│   │   ├── sections/          # Page sections
-│   │   ├── ui/                # Reusable UI components
-│   │   ├── ErrorBoundary.tsx  # React Error Boundary
-│   │   └── GoogleAnalytics.tsx
-│   ├── hooks/                 # Custom React hooks
-│   ├── lib/
-│   │   ├── analytics.ts       # Analytics utilities
-│   │   ├── metadata.ts        # SEO metadata config
-│   │   └── utils.ts           # Utility functions
-│   ├── types/                 # TypeScript type definitions
-│   └── styles/                # Global styles
-├── prisma/
-│   └── schema.prisma          # Database schema
-├── public/                    # Static assets
-├── .env.example              # Environment variables template
-└── package.json
+src/
+├── app/                      # Next.js pages & API routes
+├── features/                # Feature modules (NEW!)
+│   └── registration/
+│       ├── components/      # Feature UI
+│       ├── hooks/          # Feature hooks
+│       ├── api/           # API calls
+│       └── types/        # Types
+├── components/             # Shared components
+│   ├── atoms/            # Basic UI (Button, Input)
+│   ├── molecules/       # Combos (FormField)
+│   └── organisms/      # Complex (Header, Footer)
+├── lib/
+│   ├── api/client.ts    # HTTP client
+│   ├── analytics.ts     # Analytics
+│   └── utils.ts        # Helpers
+├── constants/          # Routes, config
+├── hooks/             # Shared hooks
+└── types/            # Global types
 ```
+
+### Architecture Principles
+
+- **Feature-first**: Code organized by business domain
+- **Component hierarchy**: Atoms → Molecules → Organisms
+- **Type-safe**: Comprehensive TypeScript coverage
+- **Centralized**: API client, constants, utilities
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed patterns.
 
 ## 🎨 Design System
 
